@@ -1,13 +1,13 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!--pages/index/index.wxml--> 
+<view class='index_head'>
+  <image src='/pages/img/banner1.jpg' mode="widthFix"></image>
+  <view class='search'>
+    <view class='icon'></view>
+    <input placeholder='摩尔龙贷款'></input>
+    <view class='addr'>深圳</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+</view>
+
+<view class='index_column'>
+  
 </view>

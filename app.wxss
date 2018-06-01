@@ -1,6 +1,13 @@
 /**app.wxss**/
 view{
   font-size: 16px;
+  font-family: "pingfang sc medium";
+}
+.clear{
+  clear: both;
+}
+.none{
+  display: none;
 }
 .container {
   height: 100%;
@@ -12,3 +19,16 @@ view{
   box-sizing: border-box;
 } 
 
+.title{
+  text-align: center;
+  line-height: 45px;
+}
+.title image{
+  width: 18px;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-bottom: 3px;
+}
+.title text{
+  font-weight: 500;
+}

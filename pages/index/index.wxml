@@ -4,10 +4,84 @@
   <view class='search'>
     <view class='icon'></view>
     <input placeholder='摩尔龙贷款'></input>
-    <view class='addr'>深圳</view>
+    <view class='addr'>
+      深圳
+      <image src='/pages/img/menu_icon.png' mode='widthFix'></image>
+    </view>
   </view>
 </view>
 
 <view class='index_column'>
-  
+  <view class='list' wx:for="{{column}}" wx:for-item="item">
+    <navigator>
+      <view>
+        <image src='{{item.img}}' mode='widthFix'></image>
+        <text>{{item.title}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>
+
+<view class='index_hot'>
+  <view class='title'>
+    <image src='http://forcomp.huiguoguo.com/icon_title1.png' mode='widthFix'></image>
+    <text>热门推荐</text>
+  </view>
+  <swiper circular autoplay>
+    <block wx:for="{{commend}}">
+      <swiper-item>
+        <view>
+          <navigator url='{{item.url}}'>
+            <image src='{{item.img}}'  mode='widthFix'></image>
+          </navigator>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class='index_cmd'>
+  <view class='title'>
+    <image src='http://forcomp.huiguoguo.com/icon_title2.png' mode='widthFix'></image>
+    <text>业务员推荐</text>
+  </view>
+  <view class='list'>
+    <view class='item' wx:for="{{people}}">
+      <navigator url='{{item.url}}'>
+        <image src='{{item.img}}' mode='widthFix'></image>
+      </navigator>
+    </view>
+  </view>
+</view>
+
+<view class='index_news'>
+  <view class='title'>
+    <image src='http://forcomp.huiguoguo.com/icon_title3.png' mode='widthFix'></image>
+    <text>新闻资讯</text>
+  </view>
+  <view class='list'>
+    <view class='item' wx:for="{{news}}">
+      <view class='cont'>
+        <navigator url='{{item.id}}'>
+        <image class='img' mode='widthFix' src='http://forcomp.huiguoguo.com/img2.jpg'></image>
+        <view class='txt'>
+          <view class='p1'>{{item.title}}</view>
+          <view class='p2'>{{item.desc}}</view>
+        </view>
+        </navigator>
+        <view class='clear'></view>
+      </view>
+      <view class='newsMenu'>
+        <text class='view'>{{item.view}}</text>
+        <text class='time'>{{item.time}}</text>
+        <view class='more' data-index='{{index}}' bindtap='moreShow'>
+          <image mode='widthFix' src='http://forcomp.huiguoguo.com/icon_more.png'></image>
+          <view class='more_hide  {{item.moreShow==0?"none":""}}'>
+            <navigator>分享链接</navigator>
+            <navigator>收藏</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -1,9 +1,13 @@
 /* pages/index/index.wxss */
+page{
+  background: #f7f7f7;
+}
 .index_head{
   position: relative;
 }
 .index_head image{
   width: 100%;
+  display: block;
 }
 
 .index_head .search{
@@ -22,9 +26,9 @@
   width: 32px;
   height: 32px;
   display: inline-block;
-  background-image: url(https://developers.weixin.qq.com/miniprogram/gitbook/images/search@2x.png);
+  background-image: url(http://forcomp.huiguoguo.com/search_icon.png);
   background-position: center center;
-  background-size: 70% 70%;
+  background-size: 65% 65%;
   background-repeat: no-repeat;
 }
 .index_head .search input{
@@ -44,4 +48,144 @@
   margin: 10px 0;
   padding: 0 10px;
   border-left: 1px solid #000;
+}
+.index_head .search .addr image{
+  width: 10px;
+  vertical-align: middle;
+}
+
+.index_column{
+  padding: 0 3.5%;
+  background: #fff;
+  overflow: auto;
+  margin-bottom: 8px;
+}
+.index_column .list{
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.index_column .list navigator{
+  padding-top: 20px;
+  padding-bottom: 18px;
+  display: block;
+}
+.index_column .list image{
+  width: 65%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}
+.index_column .list text{
+  font-size: 16px;
+}
+
+.index_hot{
+  padding: 0 3.5%;
+  background: #fff;
+  overflow: auto;
+  margin-bottom: 8px;
+}
+
+.index_hot swiper{
+  width: 100%;
+  height: 130px;
+}
+.index_hot swiper image{
+  width: 100%;
+  display: block;
+}
+
+.index_cmd{
+  padding: 0 3.5%;
+  background: #fff;
+  overflow: auto;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+.index_cmd .list{
+  overflow: auto;
+}
+.index_cmd .item{
+  width: 25%;
+  float: left;
+}
+.index_cmd .item image{
+  display: block;
+  width: 100%;
+}
+
+.index_news{
+  background: #fff;
+  overflow: auto;
+  margin-bottom: 8px;
+}
+
+.index_news .item .cont{
+  border-top: 1px solid #e6e6e6;
+  padding: 8px 3.5%;
+}
+.index_news .item .txt{
+  float: left;
+  width: 70%;
+}
+.index_news .item .txt .p1{
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 5px;
+}
+.index_news .item .txt .p2{
+  font-size: 14px;
+  color: #808080;
+}
+.index_news .item .img{
+  float: right;
+  width: 30%;
+  vertical-align: middle;
+  margin-top: 5px;
+}
+.index_news .item .newsMenu{
+  border-top: 1px solid #e6e6e6;
+  padding: 0 3.5%;
+  line-height: 35px;
+}
+.index_news .item .newsMenu text{
+  font-size: 14px;
+  color: #808080;
+  padding-left: 24px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 16px auto;
+}
+.index_news .item .newsMenu .view{
+  background-image: url(http://forcomp.huiguoguo.com/icon_view.png);
+  margin-right: 24px;
+}
+.index_news .item .newsMenu .time{
+  background-image: url(http://forcomp.huiguoguo.com/icon_time.png);
+}
+.index_news .item .newsMenu .more{
+  float: right;
+  width: 24px;
+  position: relative;
+}
+.index_news .item .newsMenu .more image{
+  width: 100%;
+  vertical-align: middle;
+}
+.index_news .item .newsMenu .more .more_hide{
+  /*display: none;*/
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  background: #fff;
+  padding: 10px 0;
+  border: 1px solid #eee;
+}
+.index_news .item .newsMenu .more .more_hide navigator{
+  display: block;
+  font-size: 16px;
+  line-height: 28px;
+  width: 100px;
+  text-indent: 12px;
 }

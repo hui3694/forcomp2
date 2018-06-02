@@ -3,6 +3,35 @@
     "pages/index/index",
     "pages/logs/logs"
   ],
+  "tabBar":{
+    "list":[
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"/pages/img/tabBar1.png",
+        "selectedIconPath":"/pages/img/tabBar1_on.png"
+      },{
+        "pagePath": "pages/index/index",
+        "text": "分类",
+        "iconPath": "/pages/img/tabBar2.png",
+        "selectedIconPath": "/pages/img/tabBar2_on.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "资讯",
+        "iconPath": "/pages/img/tabBar3.png",
+        "selectedIconPath": "/pages/img/tabBar3_on.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "/pages/img/tabBar4.png",
+        "selectedIconPath": "/pages/img/tabBar4_on.png"
+      }
+    ],
+    "color": "#000",
+    "selectedColor": "#f7752a"
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wx5a3cc438dbc7aa21",
-	"projectname": "forcomp2",
+	"projectname": "forcomp",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

@@ -6,7 +6,7 @@
     <input placeholder='摩尔龙贷款'></input>
     <view class='addr'>
       深圳
-      <image src='/pages/img/menu_icon.png' mode='widthFix'></image>
+      <!-- <image src='/pages/img/menu_icon.png' mode='widthFix'></image> -->
     </view>
   </view>
 </view>

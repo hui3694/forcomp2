@@ -37,17 +37,20 @@ page{
   height: 32px;
   vertical-align: top;
   margin-left: 3px;
-  width: 70%;
+  width: 60%;
   text-indent: .5em;
   font-size: 14px;
 }
 .index_head .search .addr{
   float: right;
   height: 12px;
+  width: 40px;
   line-height: 12px;
   margin: 10px 0;
   padding: 0 10px;
   border-left: 1px solid #000;
+  background: url("http://forcomp.huiguoguo.com/menu_icon.png") right 3px no-repeat;
+  background-size:  auto 8px;
 }
 .index_head .search .addr image{
   width: 10px;
@@ -127,7 +130,7 @@ page{
 }
 .index_news .item .txt{
   float: left;
-  width: 70%;
+  width: 68%;
 }
 .index_news .item .txt .p1{
   font-size: 16px;
@@ -135,7 +138,7 @@ page{
   margin-bottom: 5px;
 }
 .index_news .item .txt .p2{
-  font-size: 14px;
+  font-size: 13px;
   color: #808080;
 }
 .index_news .item .img{

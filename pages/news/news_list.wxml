@@ -1,0 +1,36 @@
+<!--pages/news/news_list.wxml-->
+<view class='header'>
+  <view class='search'>
+    <input placeholder='申请公积金贷款买房应考虑什么？' />
+  </view>
+</view>
+
+<view class='list'>
+  <view class='item' wx:for='{{newsList}}'>
+    <navigator class='link'>
+      <view class='img'>
+        <image src='http://forcomp.huiguoguo.com/news_img.jpg' mode='widthFix'></image>
+      </view>
+      <view class='txt'>
+        <view class='p_title'>{{item.title}}</view>
+        <view class='p_zhaiyao'>{{item.zhaiyao}}</view>
+      </view>
+      <view class='clear'></view>
+    </navigator>
+    <view class='oper'>
+      <view class='btn'>
+        <image src='http://forcomp.huiguoguo.com/news_icon1.png' mode='widthFix'></image>
+        {{item.click}}
+      </view>
+      <view class='btn'>
+        <image src='http://forcomp.huiguoguo.com/news_icon2.png' mode='widthFix'></image>
+        0
+      </view>
+      <view class='btn'>
+        <image src='http://forcomp.huiguoguo.com/news_icon3.png' mode='widthFix'></image>
+        0
+      </view>
+      <view class='clear'></view>
+    </view>
+  </view>
+</view>

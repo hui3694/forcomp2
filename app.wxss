@@ -1,4 +1,7 @@
 /**app.wxss**/
+page{
+  background: #f7f7f7;
+}
 view{
   font-size: 16px;
   font-family: "pingfang sc medium";

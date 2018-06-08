@@ -1,16 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/news/news_list"
   ],
-  "tabBar":{
-    "list":[
+  "tabBar": {
+    "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath":"/pages/img/tabBar1.png",
-        "selectedIconPath":"/pages/img/tabBar1_on.png"
-      },{
+        "iconPath": "/pages/img/tabBar1.png",
+        "selectedIconPath": "/pages/img/tabBar1_on.png"
+      },
+      {
         "pagePath": "pages/index/index",
         "text": "分类",
         "iconPath": "/pages/img/tabBar2.png",
@@ -37,5 +39,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+    
   }
 }

@@ -1,7 +1,5 @@
 /* pages/index/index.wxss */
-page{
-  background: #f7f7f7;
-}
+
 .index_head{
   position: relative;
 }

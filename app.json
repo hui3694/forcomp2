@@ -19,7 +19,7 @@
         "selectedIconPath": "/pages/img/tabBar2_on.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/news/news_list",
         "text": "资讯",
         "iconPath": "/pages/img/tabBar3.png",
         "selectedIconPath": "/pages/img/tabBar3_on.png"
@@ -38,7 +38,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-    
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 10
   }
 }

@@ -24,13 +24,17 @@
       </view>
       <view class='btn'>
         <image src='http://forcomp.huiguoguo.com/news_icon2.png' mode='widthFix'></image>
-        0
+        -
       </view>
       <view class='btn'>
         <image src='http://forcomp.huiguoguo.com/news_icon3.png' mode='widthFix'></image>
-        0
+        -
       </view>
       <view class='clear'></view>
     </view>
   </view>
+</view>
+
+<view class='bottomMsg'>
+  <view>{{btmMsg}}</view>
 </view>

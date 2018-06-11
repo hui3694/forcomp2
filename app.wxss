@@ -35,3 +35,10 @@ view{
 .title text{
   font-weight: 500;
 }
+
+
+.bottomMsg{
+  line-height: 80px;
+  text-align: center;
+  color: #999;
+}

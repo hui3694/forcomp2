@@ -1,11 +1,13 @@
 // pages/news/news_list.js
+var page = 1;
 Page({
   
   /**
    * 页面的初始数据
    */
   data: {
-    newsList:[]
+    newsList:[],
+    btmMsg:'下拉加载更多...'
   },
 
   /**
@@ -16,23 +18,56 @@ Page({
     wx.request({
       url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_list',
       data:{
-        page:1
+        page:page
       },
       header:{
         'content-type': 'application/json' // 默认值
       },
       success:function(res){
-        console.log(res);
         that.setData({
           newsList:res.data
         })
-        console.log(that.data)
       }
     })
   },
-  //上拉
-  onReachBottom:function(){
-    console.log('上拉');
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    var that = this;
+    page = page + 1;
+    wx.request({
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_list',
+      data: {
+        page: page
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        that.setData({
+          btmMsg: '正在加载...'
+        });
+
+        if(res.data.status==0){
+          that.setData({
+            btmMsg: res.data.msg
+          });
+        }else{
+          for (var i = 0; i < res.data.length; i++) {
+            that.data.newsList.push(res.data[i]);
+          }
+          that.setData({
+            newsList: that.data.newsList
+          })
+
+          that.setData({
+            btmMsg: '下拉加载更多'
+          });
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -69,12 +104,6 @@ Page({
   
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
 
   /**
    * 用户点击右上角分享

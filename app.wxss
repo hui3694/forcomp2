@@ -9,6 +9,9 @@ view{
 .clear{
   clear: both;
 }
+.show{
+  display: inherit;
+}
 .none{
   display: none;
 }

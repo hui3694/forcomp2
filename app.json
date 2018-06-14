@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/news/news_list"
+    "pages/news/news_list",
+    "pages/pro/category"
   ],
   "tabBar": {
     "list": [
@@ -13,7 +14,7 @@
         "selectedIconPath": "/pages/img/tabBar1_on.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/pro/category",
         "text": "分类",
         "iconPath": "/pages/img/tabBar2.png",
         "selectedIconPath": "/pages/img/tabBar2_on.png"

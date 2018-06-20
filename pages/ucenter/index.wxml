@@ -1,12 +1,12 @@
 <!--pages/ucenter/index.wxml-->
-<view class='header'>
+<view class='header' wx:if='{{isLogin==1}}'>
   <view class='info'>
     <view class='img'>
-      <image mode='widthFix' src='http://forcomp.huiguoguo.com/img3.png'></image>
+      <image mode='widthFix' src='{{userInfo.avatarUrl}}'></image>
     </view>
     <view class='left'>
-      <view class='name'>个人昵称</view>
-      <view class='tel'>13245678902</view>
+      <view class='name'>{{userInfo.nickName}}</view>
+      <view class='tel'>{{userInfo.tel}}</view>
     </view>
     <view class='right'>
       <navigator>个人信息</navigator>
@@ -15,7 +15,7 @@
   </view>
 </view>
 
-<view class='menu'>
+<view class='menu' wx:if='{{isLogin==1}}'>
   <view class='item'>
     <navigator>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon1.png'></image>

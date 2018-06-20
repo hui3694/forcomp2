@@ -13,6 +13,7 @@ Page({
    */
   onLoad: function (options) {
     var that=this
+
     // 查看是否授权
     wx.getSetting({
       success: function (res) {
@@ -22,6 +23,9 @@ Page({
             success: function (res) {
               console.log('该用户已完成授权')
               console.log(res)
+              that.setData({
+                userInfo: res.userInfo
+              })
             }
           })
         }else{
@@ -36,6 +40,7 @@ Page({
   //授权回调
   bindGetUserInfo: function (e) {
     var that=this
+
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
@@ -47,46 +52,57 @@ Page({
               })
               console.log('授权成功')
               console.log(e.detail.userInfo)
-              that.regFun();
-            }
-          })
-        }
-      }
-    })
-  },
-  regFun:function(){
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          console.log(res.code);
-          //发起网络请求
-          var appid = 'wx5a3cc438dbc7aa21';
-          var secre = '242517f947a03d75d2be912719e0cfd4';
+              that.setData({
+                userInfo: res.userInfo
+              })
 
-          wx.request({
-            url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_openid', //仅为示例，并非真实的接口地址
-            data: {
-              appid: appid,
-              secre: secre,
-              code: res.code
-            },
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: function (res) {
-              console.log(res.data)
+              //register
+              wx.login({
+                success: function (res1) {
+                  if (res1.code) {
+                    //发起网络请求
+                    var appid = 'wx5a3cc438dbc7aa21';
+                    var secre = '242517f947a03d75d2be912719e0cfd4';
+
+
+                    wx.request({
+                      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_openid', //仅为示例，并非真实的接口地址
+                      data: {
+                        appid: appid,
+                        secre: secre,
+                        code: res1.code
+                      },
+                      header: {
+                        'content-type': 'application/json' // 默认值
+                      },
+                      success: function (res2) {
+
+                        wx.request({
+                          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=register',
+                          data: {
+                            avatar: res.userInfo.avatarUrl,
+                            nickname: res.userInfo.nickName,
+                            openid: res2.data.openid,
+                            parent_id: 0,
+                            gender: res.userInfo.gender,
+                            country: res.userInfo.country,
+                            province: res.userInfo.province,
+                            city: res.userInfo.city
+                          }
+                        })
+                      }
+                    })
+
+                  } else {
+                    console.log('登录失败！' + res2.errMsg)
+                  }
+                }
+              });
             }
           })
-          
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
+        };
       }
     });
-
-
-    
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

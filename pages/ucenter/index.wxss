@@ -61,3 +61,8 @@
   max-height: 29px;
   margin-bottom: 5px;
 }
+
+.btn-area{
+  margin: 0 20px;
+  margin-top: 200px;
+}

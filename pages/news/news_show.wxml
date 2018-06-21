@@ -1,0 +1,12 @@
+<!--pages/news/news_show.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+
+<view class='header'>
+  <view class='n_title'>{{model.title}}</view>
+  <view class='time'>{{model.time}}</view>
+</view>
+
+
+<view class='cont'>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>

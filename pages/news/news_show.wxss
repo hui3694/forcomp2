@@ -1,0 +1,23 @@
+/* pages/news/news_show.wxss */
+@import "/wxParse/wxParse.wxss";
+page{
+  background: #fff;
+}
+.header{
+  padding:12px 0;
+  border-bottom: 1px solid #ccc;
+}
+.header .n_title{
+  font-size: 16px;
+  margin-left: 14px;
+  margin-bottom: 10px;
+}
+.header .time{
+  margin-left: 14px;
+  font-size: 14px;
+  color: #999;
+}
+
+.cont{
+  margin: 20px;
+}

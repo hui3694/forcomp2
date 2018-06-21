@@ -1,5 +1,6 @@
 // pages/news/news_list.js
 var page = 1;
+var keywords='';
 Page({
   
   /**
@@ -40,7 +41,8 @@ Page({
     wx.request({
       url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_list',
       data: {
-        page: page
+        page: page,
+        keywords: keywords
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -49,25 +51,37 @@ Page({
         that.setData({
           btmMsg: '正在加载...'
         });
-
         if(res.data.status==0){
           that.setData({
             btmMsg: res.data.msg
           });
         }else{
+          
           for (var i = 0; i < res.data.length; i++) {
             that.data.newsList.push(res.data[i]);
           }
           that.setData({
             newsList: that.data.newsList
-          })
-
+          });
           that.setData({
             btmMsg: '下拉加载更多'
           });
         }
       }
     })
+  },
+  search:function(e){
+    keywords = e.detail.value
+    page = 0;
+    var that=this;
+
+    setTimeout(function () {
+      that.setData({
+        newsList: []
+      })
+      that.onReachBottom();
+    }, 500)
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

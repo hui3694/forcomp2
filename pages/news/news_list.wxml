@@ -1,15 +1,15 @@
 <!--pages/news/news_list.wxml-->
 <view class='header'>
   <view class='search'>
-    <input placeholder='申请公积金贷款买房应考虑什么？' />
+    <input placeholder='申请公积金贷款买房应考虑什么？' bindinput='search' />
   </view>
 </view>
 
 <view class='list'>
   <view class='item' wx:for='{{newsList}}'>
-    <navigator class='link'>
-      <view class='img'>
-        <image src='http://forcomp.huiguoguo.com/news_img.jpg' mode='widthFix'></image>
+    <navigator url='news_show?id={{item.id}}' class='link'>
+      <view class='img' wx:if='{{item.img!="img"}}'>
+        <image src='http://fg.huiguoguo.com{{item.img}}' mode='widthFix'></image>
       </view>
       <view class='txt'>
         <view class='p_title'>{{item.title}}</view>
@@ -20,15 +20,15 @@
     <view class='oper'>
       <view class='btn'>
         <image src='http://forcomp.huiguoguo.com/news_icon1.png' mode='widthFix'></image>
-        {{item.click}}
+        {{item.view}}
       </view>
       <view class='btn'>
         <image src='http://forcomp.huiguoguo.com/news_icon2.png' mode='widthFix'></image>
-        -
+        {{item.collect}}
       </view>
       <view class='btn'>
         <image src='http://forcomp.huiguoguo.com/news_icon3.png' mode='widthFix'></image>
-        -
+        {{item.zan}}
       </view>
       <view class='clear'></view>
     </view>

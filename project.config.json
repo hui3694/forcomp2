@@ -38,7 +38,7 @@
 				{
 					"id": 0,
 					"name": "news",
-					"pathName": "pages/ucenter/index",
+					"pathName": "pages/news/news_list",
 					"query": ""
 				}
 			]

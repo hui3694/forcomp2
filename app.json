@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/news/news_list",
     "pages/pro/category",
-    "pages/ucenter/index"
+    "pages/ucenter/index",
+    "pages/news/news_show"
   ],
   "tabBar": {
     "list": [

@@ -33,13 +33,14 @@
 .item .img{
   width: 32%;
   float: left;
+  margin-right: 5%;
 }
 .item .img image{
   width: 100%;
 }
 .item .txt{
-  width: 63%;
-  float: right;
+  /* width: 63%;
+  float: left; */
 }
 .item .txt .p_title{
   font-size: 16px;

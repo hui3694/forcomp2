@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin:1
+    isLogin:0
   },
 
   /**
@@ -13,34 +13,19 @@ Page({
    */
   onLoad: function (options) {
     var that=this
+    if (getApp().globalData.user==undefined){
+      console.log('未登录');
+      that.bindGetUserInfo(null);
+    }else{
+      that.setData({
+        isLogin:1
+      })
+    }
 
-    // 查看是否授权
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              console.log('该用户已完成授权')
-              console.log(res)
-              that.setData({
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }else{
-          that.setData({
-            isLogin: 0
-          })
-          console.log('该用户未完成授权')
-        }
-      }
-    })
   },
   //授权回调
   bindGetUserInfo: function (e) {
     var that=this
-
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
@@ -51,7 +36,7 @@ Page({
                 isLogin: 1
               })
               console.log('授权成功')
-              console.log(e.detail.userInfo)
+              //console.log(e.detail.userInfo)
               that.setData({
                 userInfo: res.userInfo
               })
@@ -64,7 +49,6 @@ Page({
                     var appid = 'wx5a3cc438dbc7aa21';
                     var secre = '242517f947a03d75d2be912719e0cfd4';
 
-
                     wx.request({
                       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_openid', //仅为示例，并非真实的接口地址
                       data: {
@@ -76,7 +60,6 @@ Page({
                         'content-type': 'application/json' // 默认值
                       },
                       success: function (res2) {
-
                         wx.request({
                           url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=register',
                           data: {
@@ -88,6 +71,11 @@ Page({
                             country: res.userInfo.country,
                             province: res.userInfo.province,
                             city: res.userInfo.city
+                          },
+                          success:function(res3){
+                            console.log(111);
+                            console.log(res3.data);
+                            getApp().globalData.user = res3.data;
                           }
                         })
                       }

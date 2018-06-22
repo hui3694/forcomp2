@@ -38,8 +38,8 @@
 				{
 					"id": 0,
 					"name": "news",
-					"pathName": "pages/news/news_list",
-					"query": ""
+					"pathName": "pages/news/news_show",
+					"query": "id=5"
 				}
 			]
 		}

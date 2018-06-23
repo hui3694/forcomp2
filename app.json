@@ -5,7 +5,8 @@
     "pages/news/news_list",
     "pages/pro/category",
     "pages/ucenter/index",
-    "pages/news/news_show"
+    "pages/news/news_show",
+    "pages/ucenter/userEdit"
   ],
   "tabBar": {
     "list": [
@@ -43,6 +44,6 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "onReachBottomDistance": 10,
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh": true
   }
 }

@@ -6,10 +6,10 @@
     </view>
     <view class='left'>
       <view class='name'>{{userInfo.nickName}}</view>
-      <view class='tel'>{{userInfo.tel}}</view>
+      <view class='tel'>{{userInfo.phone.length>0?userInfo.phone:'未绑定手机'}}</view>
     </view>
     <view class='right'>
-      <navigator>个人信息</navigator>
+      <navigator url='userEdit'>个人信息</navigator>
     </view>
     <view class='clear'></view>
   </view>

@@ -1,0 +1,53 @@
+/* pages/ucenter/userEdit.wxss */
+.info{
+
+}
+.info .info_title{
+  background: #fff;
+  line-height: 40px;
+  padding: 0 10px;
+}
+.info .list{
+  background: #fff;
+}
+.info .item{
+  line-height: 40px;
+  margin: 0 10px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+.info .item .hd{
+  width: 30%;
+  float: left;
+  line-height: 40px;
+}
+.info .item .hd .lbl{
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin-right: 15px;
+}
+.info .item .bd{
+  line-height: 40px;
+}
+.info .item .bd .ipt{
+  line-height: 40px;
+  height: 40px;
+  font-size: 14px;
+}
+.info .item .bd .rad label{
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.submit{
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 85%;
+}
+.submit button{
+  background:#1aad19;
+  color: #fff;
+  line-height: 38px;
+  font-size: 16px;
+}

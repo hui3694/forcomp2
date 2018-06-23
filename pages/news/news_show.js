@@ -18,9 +18,12 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
-    this.setData({
-      id: options.id
-    })
+    if(that.data.id==0){
+      that.setData({
+        id: options.id
+      })
+    }
+    
     var uid=0;
     if (getApp().globalData.user!=null){
       uid = getApp().globalData.user.id;
@@ -29,12 +32,12 @@ Page({
     wx.request({
       url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_model',
       data:{
-        id: options.id,
+        id: that.data.id,
         uid: uid
       },
       success:function(res){
         var cont = res.data.cont.replace(/\/upload/g, "https://fg.huiguoguo.com/upload");
-        WxParse.wxParse('article', 'html', cont, that, 20)
+        WxParse.wxParse('article', 'html', cont, that, 20);
         
         that.setData({
           model:res.data
@@ -115,13 +118,14 @@ Page({
       url: 'http://localhost:40620/tools/app_ajax.ashx?action=post_news_commend',
       data:{
         uid: getApp().globalData.user.id,
-        name: getApp().globalData.user.nickName,
+        name: getApp().globalData.user.nickname,
         avatar: getApp().globalData.user.avatar,
         isPN: 2,
         news_id: that.data.model.id,
         cont: e.detail.value.cont
       },
       success:function(res){
+        that.onPullDownRefresh();
         console.log('success');
       }
     })
@@ -178,7 +182,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    var that = this
+    that.setData({
+      isPost: 0
+    });
+    that.onLoad(null);
   },
 
   /**

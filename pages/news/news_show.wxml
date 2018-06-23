@@ -24,7 +24,7 @@
     <block wx:if='{{comList.length>0}}'>
       <view class='item'  wx:for='{{comList}}'>
         <view class='left'>
-          <image src='http://img.weiye.me/zcimgdir/headimg/5ba0cfb9d0142796c61109e61af6d4db_o.jpg' mode='widthFix'></image>
+          <image src='{{item.avatar}}' mode='widthFix'></image>
         </view>
         <view class='right'>
           <view class='time'>{{item.time}}</view>

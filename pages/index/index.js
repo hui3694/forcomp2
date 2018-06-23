@@ -101,7 +101,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        console.log(res);
+      }
+    })
+
+    this.fun();
+
+    wx.request({
+      url: 'https://api.map.baidu.com/geocoder/v2/?ak=DyRqXPh8x25Od6N5XEiqSeuTgyts9nGu&location=31.11325,121.38206&output=json',
+      success:function(res){
+          
+        console.log(res);
+      }
+    })
+  },
+
+  fun:function(){
+    var la1 = 31.151617;
+    var lo1 = 121.33128;
+
+    var la2 = 31.254959;
+    var lo2 = 121.395008;
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137;//地球半径
+    s = Math.round(s * 10000) / 10000;
+
+    console.log(s);
   },
 
   /**

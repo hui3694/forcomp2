@@ -37,10 +37,7 @@ Page({
               })
               console.log('授权成功')
               //console.log(e.detail.userInfo)
-              that.setData({
-                userInfo: res.userInfo
-              })
-
+              
               //register
               wx.login({
                 success: function (res1) {
@@ -73,8 +70,10 @@ Page({
                             city: res.userInfo.city
                           },
                           success:function(res3){
-                            console.log(111);
-                            console.log(res3.data);
+                            that.setData({
+                              userInfo: res.userInfo
+                            })
+
                             getApp().globalData.user = res3.data;
                           }
                         })
@@ -91,6 +90,8 @@ Page({
         };
       }
     });
+
+    console.log(that.data.userInfo)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

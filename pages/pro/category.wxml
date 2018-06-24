@@ -20,7 +20,7 @@
     <view class='list'>
       <view class='item' wx:for='{{item.son}}' wx:for-item="son">
         <image src='http://localhost:40620/{{son.img}}' mode='widthFix'></image>
-        <view class='num'>-个</view>
+        <view class='num'>{{son.num}}个</view>
         <view class='des'>已发布的产品</view>
         <navigator class='more'>查看更多</navigator>
       </view>

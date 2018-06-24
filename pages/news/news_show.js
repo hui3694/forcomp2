@@ -30,7 +30,7 @@ Page({
     }
     //获取模型
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_model',
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_model',
       data:{
         id: that.data.id,
         uid: uid
@@ -51,7 +51,7 @@ Page({
     })
     //获取评论列表
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_commend',
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_commend',
       data:{
         id:that.data.id
       },
@@ -73,7 +73,7 @@ Page({
     }
 
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=news_view',
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=news_view',
       data: {
         uid: getApp().globalData.user.id,
         isPN:2,   //news
@@ -115,7 +115,7 @@ Page({
     }
 
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=post_news_commend',
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=post_news_commend',
       data:{
         uid: getApp().globalData.user.id,
         name: getApp().globalData.user.nickname,
@@ -145,7 +145,7 @@ Page({
     }
 
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=news_view',
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=news_view',
       data: {
         uid: uid,
         isPN: 2,   //news

@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_list',
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
       data:{
         page:page
       },
@@ -39,7 +39,7 @@ Page({
     var that = this;
     page = page + 1;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_news_list',
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
       data: {
         page: page,
         keywords: keywords

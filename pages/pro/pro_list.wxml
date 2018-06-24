@@ -1,0 +1,12 @@
+<!--pages/pro/pro_list.wxml-->
+<view class='list'>
+  <view class='item' wx:for='{{[1,2,3]}}'>
+    <navigator url='news_show?id={{item.id}}' class='link'>
+      <view class='txt'>
+        <view class='p_title'>title</view>
+        <view class='p_zhaiyao'>啊啊啊啊啊啊啊啊啊</view>
+      </view>
+      <view class='clear'></view>
+    </navigator>
+  </view>
+</view>

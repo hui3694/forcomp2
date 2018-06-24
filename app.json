@@ -6,7 +6,9 @@
     "pages/pro/category",
     "pages/ucenter/index",
     "pages/news/news_show",
-    "pages/ucenter/userEdit"
+    "pages/ucenter/userEdit",
+    "pages/pro/pro_add",
+    "pages/pro/pro_list"
   ],
   "tabBar": {
     "list": [

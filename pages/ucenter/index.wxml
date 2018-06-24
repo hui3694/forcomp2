@@ -6,7 +6,7 @@
     </view>
     <view class='left'>
       <view class='name'>{{userInfo.nickName}}</view>
-      <view class='tel'>{{userInfo.phone.length>0?userInfo.phone:'未绑定手机'}}</view>
+      <view class='tel'>{{userInfo.phone}}</view>
     </view>
     <view class='right'>
       <navigator url='userEdit'>个人信息</navigator>
@@ -65,7 +65,7 @@
     </navigator>
   </view>
   <view class='item'>
-    <navigator>
+    <navigator url='../pro/pro_add'>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon9.png'></image>
       <view>产品信息</view>
     </navigator>

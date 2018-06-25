@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
       data:{},
       success:function(res){
         that.setData({

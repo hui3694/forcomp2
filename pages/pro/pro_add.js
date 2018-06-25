@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     var that=this
     wx.request({
-      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
       success:function(res){
         console.log(res.data);
         that.setData({
@@ -70,12 +70,18 @@ Page({
     e.detail.value.city = that.data.city;
     e.detail.value.openid = getApp().globalData.user.openid;
     console.log(e.detail.value);
-
+    
     wx.request({
-      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=product_add',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=product_add',
       data: e.detail.value,
       success:function(res){
-
+        wx.showToast({
+          title: res.data.msg,
+          duration: 2000
+        })
+        setTimeout(function(){
+          wx.switchTab({ url: '../ucenter/index' })
+        },2000)
       }
     })
   },

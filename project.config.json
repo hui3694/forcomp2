@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -44,7 +44,7 @@
 				{
 					"id": 1,
 					"name": "demo",
-					"pathName": "pages/pro/pro_list",
+					"pathName": "pages/pro/category",
 					"query": ""
 				}
 			]

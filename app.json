@@ -8,7 +8,8 @@
     "pages/news/news_show",
     "pages/ucenter/userEdit",
     "pages/pro/pro_add",
-    "pages/pro/pro_list"
+    "pages/pro/pro_list",
+    "pages/pro/pro_show"
   ],
   "tabBar": {
     "list": [

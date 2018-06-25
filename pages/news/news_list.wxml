@@ -13,7 +13,7 @@
       </view>
       <view class='txt'>
         <view class='p_title'>{{item.title}}</view>
-        <view class='p_zhaiyao'>{{item.zhaiyao}}</view>
+        <view class='p_zhaiyao'>{{item.desc}}</view>
       </view>
       <view class='clear'></view>
     </navigator>

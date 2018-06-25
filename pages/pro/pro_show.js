@@ -1,4 +1,4 @@
-// pages/news/news_show.js
+// pages/pro/pro_show.js
 var WxParse = require('../../wxParse/wxParse.js');
 
 Page({
@@ -7,40 +7,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:0,
-    model:{},
-    comList:[],
-    isPost:0
+    id: 0,
+    model: {},
+    comList: [],
+    isPost: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
-    if(that.data.id==0){
+    var that = this;
+    if (that.data.id == 0) {
       that.setData({
         id: options.id
       })
     }
-    
-    var uid=0;
-    if (getApp().globalData.user!=null){
+
+    var uid = 0;
+    if (getApp().globalData.user != null) {
       uid = getApp().globalData.user.id;
     }
     //获取模型
     wx.request({
-      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_model',
-      data:{
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_model',
+      data: {
         id: that.data.id,
         uid: uid
       },
-      success:function(res){
-        var cont = res.data.cont.replace(/\/upload/g, "https://fg.huiguoguo.com/upload");
-        WxParse.wxParse('article', 'html', cont, that, 20);
-        
+      success: function (res) {
         that.setData({
-          model:res.data
+          model: res.data
         });
         that.viewAdd();
         wx.setNavigationBarTitle({
@@ -52,20 +49,19 @@ Page({
     //获取评论列表
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_commend',
-      data:{
-        id:that.data.id
+      data: {
+        id: that.data.id
       },
-      success:function(res){
+      success: function (res) {
         that.setData({
-          comList:res.data
+          comList: res.data
         })
       }
     })
-
   },
-  collect:function(){
-    var that=this;
-    if (getApp().globalData.user == undefined){
+  collect: function () {
+    var that = this;
+    if (getApp().globalData.user == undefined) {
       wx.switchTab({
         url: '../ucenter/index'
       })
@@ -76,20 +72,20 @@ Page({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=news_view',
       data: {
         uid: getApp().globalData.user.id,
-        isPN:2,   //news
-        type:2,
-        id:that.data.model.id
-      }, 
+        isPN: 2,   //news
+        type: 2,
+        id: that.data.model.id
+      },
       success: function (res) {
         that.setData({
-          'model.isCollect': that.data.model.isCollect==1?0:1
+          'model.isCollect': that.data.model.isCollect == 1 ? 0 : 1
         })
 
         wx.showToast({
           title: res.data.msg,
           icon: 'success',
           duration: 2000
-        })  
+        })
       }
     })
 
@@ -104,9 +100,9 @@ Page({
       isPost: 0
     })
   },
-  formSubmit:function(e){
+  formSubmit: function (e) {
     console.log(e.detail.value.cont);
-    var that=this
+    var that = this
     if (getApp().globalData.user == null) {
       wx.switchTab({
         url: '../ucenter/index'
@@ -116,27 +112,41 @@ Page({
 
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=post_news_commend',
-      data:{
+      data: {
         uid: getApp().globalData.user.id,
         name: getApp().globalData.user.nickname,
         avatar: getApp().globalData.user.avatar,
-        isPN: 2,
+        isPN: 1,
         news_id: that.data.model.id,
         cont: e.detail.value.cont
       },
-      success:function(res){
-        that.onPullDownRefresh();
-        console.log('success');
+      success: function (res) {
+        if(res.data.status==1){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'success',
+            duration: 2000
+          })
+          that.onPullDownRefresh();
+          console.log('success');
+        }else{//提交失败
+          wx.showModal({
+            title: '提交失败',
+            content: res.data.msg,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
+        
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-  viewAdd:function(){
+  viewAdd: function () {
     var that = this;
     //浏览量+1
     var uid = 0;
@@ -148,8 +158,8 @@ Page({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=news_view',
       data: {
         uid: uid,
-        isPN: 2,   //news
-        type: 1,   //zan
+        isPN: 1,   //pro
+        type: 1,   //view
         id: that.data.model.id
       },
       success: function (res) {
@@ -157,6 +167,13 @@ Page({
       }
     })
   },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -182,11 +199,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var that = this
-    that.setData({
-      isPost: 0
-    });
-    that.onLoad(null);
+  
   },
 
   /**

@@ -13,9 +13,9 @@
 
 <view class='index_column'>
   <view class='list' wx:for="{{column}}" wx:for-item="item">
-    <navigator>
+    <navigator bindtap='goCategory'>
       <view>
-        <image src='{{item.img}}' mode='widthFix'></image>
+        <image src='http://fg.huiguoguo.com{{item.img2}}' mode='widthFix'></image>
         <text>{{item.title}}</text>
       </view>
     </navigator>
@@ -63,7 +63,7 @@
     <view class='item' wx:for="{{news}}">
       <view class='cont'>
         <navigator url='{{item.id}}'>
-        <image class='img' mode='widthFix' src='http://forcomp.huiguoguo.com/img2.jpg'></image>
+        <image class='img' mode='widthFix' src='http://fg.huiguoguo.com{{item.img}}'></image>
         <view class='txt'>
           <view class='p1'>{{item.title}}</view>
           <view class='p2'>{{item.desc}}</view>

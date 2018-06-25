@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
       data:{
         page:page
       },
@@ -25,6 +25,9 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success:function(res){
+        res.data.forEach((item) => {
+          item.desc = item.zhaiyao.substring(0, 50) + '...';
+        })
         that.setData({
           newsList:res.data
         })
@@ -39,7 +42,7 @@ Page({
     var that = this;
     page = page + 1;
     wx.request({
-      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
       data: {
         page: page,
         keywords: keywords

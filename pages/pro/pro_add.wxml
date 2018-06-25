@@ -1,7 +1,7 @@
 <!--pages/pro/pro_add.wxml-->
 <view class='header'>
   <view class='item'>
-    <navigator>产品列表</navigator>
+    <navigator>客户留言</navigator>
   </view>
   <view class='item on'>
     <navigator>发布产品</navigator>

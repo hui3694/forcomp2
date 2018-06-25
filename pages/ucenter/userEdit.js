@@ -26,7 +26,7 @@ Page({
     //e.detail.value
     //http://localhost:40620/tools/app_ajax.ashx?action=get_news_model
     wx.request({
-      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=update_user',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=update_user',
       data:e.detail.value,
       success:function(res){
         if(res.data.status==1){

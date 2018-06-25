@@ -28,18 +28,20 @@
   background-position: center center;
   background-size: 65% 65%;
   background-repeat: no-repeat;
+  float: left;
 }
 .index_head .search input{
-  display: inline-block;
   line-height: 32px;
   height: 32px;
   vertical-align: top;
-  margin-left: 3px;
-  width: 60%;
   text-indent: .5em;
   font-size: 14px;
+  margin-left: 35px;
 }
 .index_head .search .addr{
+  position: absolute;
+  right: 10px;
+  top: 0;
   float: right;
   height: 12px;
   width: 40px;

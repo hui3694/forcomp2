@@ -6,19 +6,7 @@ Page({
    */
   data: {
     column:[
-      {
-        title: '银行',
-        img: 'http://forcomp.huiguoguo.com/icon1.png'
-      }, {
-        title: '小贷机构',
-        img: 'http://forcomp.huiguoguo.com/icon2.png'
-      }, {
-        title: '网贷',
-        img: 'http://forcomp.huiguoguo.com/icon3.png'
-      }, {
-        title: '渠道商',
-        img: 'http://forcomp.huiguoguo.com/icon4.png'
-      },
+
     ],
     commend:[
       {
@@ -48,39 +36,7 @@ Page({
       }
     ],
     news:[
-      {
-        id: 0,
-        title: '上海银行触发稳定股价措施经营向好估值或修复回归',
-        img: 'http://forcomp.huiguoguo.com/img2.jpg',
-        desc: '22日，上海银行(行情601229,诊股)发布关于触发稳定股价措施的提示性公告显上海...',
-        view: '24',
-        time: '2018-05-23',
-        moreShow: 0
-      }, {
-        id: 0,
-        title: '上海银行触发稳定股价措施经营向好估值或修复回归',
-        img: 'http://forcomp.huiguoguo.com/img2.jpg',
-        desc: '22日，上海银行(行情601229,诊股)发布关于触发稳定股价措施的提示性公告显上海...',
-        view: '24',
-        time: '2018-05-23',
-        moreShow: 0
-      }, {
-        id: 0,
-        title: '上海银行触发稳定股价措施经营向好估值或修复回归',
-        img: 'http://forcomp.huiguoguo.com/img2.jpg',
-        desc: '22日，上海银行(行情601229,诊股)发布关于触发稳定股价措施的提示性公告显上海...',
-        view: '24',
-        time: '2018-05-23',
-        moreShow: 0
-      }, {
-        id: 0,
-        title: '上海银行触发稳定股价措施经营向好估值或修复回归',
-        img: 'http://forcomp.huiguoguo.com/img2.jpg',
-        desc: '22日，上海银行(行情601229,诊股)发布关于触发稳定股价措施的提示性公告显上海...',
-        view: '24',
-        time: '2018-05-23',
-        moreShow: 0
-      },
+     
     ]
 
   },
@@ -117,8 +73,39 @@ Page({
         console.log(res);
       }
     })
-  },
+    //load
+    var that = this;
+    //pro
+    wx.request({
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
+      data: {},
+      success: function (res) {
+        that.setData({
+          column: res.data
+        })
+      }
+    })
+    //news
+    wx.request({
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
+      data: {},
+      success: function (res) {
+        res.data.forEach((item) => {
+          item.desc = item.zhaiyao.substring(0, 50)+'...';
+          item.moreShow = 0;
+        })
 
+        that.setData({
+          news: res.data
+        })
+      }
+    })
+  },
+  goCategory:function(){
+    wx.switchTab({
+      url: '../pro/category' 
+    })
+  },
   fun:function(){
     var la1 = 31.151617;
     var lo1 = 121.33128;
@@ -140,7 +127,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**

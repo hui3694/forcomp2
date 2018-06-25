@@ -13,11 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    });
+
     var that = this;
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
       data:{},
       success:function(res){
+        wx.hideLoading();
         that.setData({
           category:res.data
         })

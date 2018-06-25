@@ -1,11 +1,11 @@
 <!--pages/ucenter/index.wxml-->
-<view class='header' wx:if='{{isLogin==1}}'>
+<view class='header' wx:if='{{isLogin==2}}'>
   <view class='info'>
     <view class='img'>
-      <image mode='widthFix' src='{{userInfo.avatarUrl}}'></image>
+      <image mode='widthFix' src='{{userInfo.avatar}}'></image>
     </view>
     <view class='left'>
-      <view class='name'>{{userInfo.nickName}}</view>
+      <view class='name'>{{userInfo.nickname}}</view>
       <view class='tel'>{{userInfo.phone}}</view>
     </view>
     <view class='right'>
@@ -15,7 +15,7 @@
   </view>
 </view>
 
-<view class='menu' wx:if='{{isLogin==1}}'>
+<view class='menu' wx:if='{{isLogin==2}}'>
   <view class='item'>
     <navigator>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon1.png'></image>

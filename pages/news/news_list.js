@@ -8,13 +8,19 @@ Page({
    */
   data: {
     newsList:[],
-    btmMsg:'下拉加载更多...'
+    btmMsg:'下拉加载更多...',
+    noMore: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
     var that = this;
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
@@ -25,6 +31,8 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success:function(res){
+        wx.hideLoading();
+
         res.data.forEach((item) => {
           item.desc = item.zhaiyao.substring(0, 50) + '...';
         })
@@ -39,6 +47,14 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if(this.data.noMore){
+      return;
+    }
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
     var that = this;
     page = page + 1;
     wx.request({
@@ -51,12 +67,15 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+        setTimeout(function () { wx.hideLoading();},1000);
+
         that.setData({
           btmMsg: '正在加载...'
         });
         if(res.data.status==0){
           that.setData({
-            btmMsg: res.data.msg
+            btmMsg: res.data.msg,
+            noMore: true
           });
         }else{
           

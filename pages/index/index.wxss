@@ -44,17 +44,32 @@
   top: 0;
   float: right;
   height: 12px;
-  width: 40px;
+  width: 55px;
   line-height: 12px;
   margin: 10px 0;
   padding: 0 10px;
   border-left: 1px solid #000;
-  background: url("http://forcomp.huiguoguo.com/menu_icon.png") right 3px no-repeat;
+  background: url("http://forcomp.huiguoguo.com/menu_icon.png") right 1px no-repeat;
   background-size:  auto 8px;
 }
 .index_head .search .addr image{
   width: 10px;
   vertical-align: middle;
+}
+.index_head .search .addr .addrList{
+  position: absolute;
+  left: 0;
+  top: 22px;
+  background: #fff;
+  width: 80px;
+  border-radius: 5px;
+}
+.index_head .search .addr .addrList .item{
+  line-height: 36px;
+  height: 36px;
+  text-indent: 8px;
+  border-bottom: 1px solid #eee;
+  
 }
 
 .index_column{

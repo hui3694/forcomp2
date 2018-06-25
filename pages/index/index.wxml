@@ -5,8 +5,13 @@
     <view class='icon'></view>
     <input placeholder='摩尔龙贷款'></input>
     <view class='addr'>
-      深圳
+      深圳市
       <!-- <image src='/pages/img/menu_icon.png' mode='widthFix'></image> -->
+      <view class='addrList' style='display:none;'>
+        <view class='item'>上海市</view>
+        <view class='item'>深圳市</view>
+        <view class='item'>其它事</view>
+      </view>
     </view>
   </view>
 </view>
@@ -62,7 +67,7 @@
   <view class='list'>
     <view class='item' wx:for="{{news}}">
       <view class='cont'>
-        <navigator url='{{item.id}}'>
+        <navigator url='../news/news_show?id={{item.id}}'>
         <image class='img' mode='widthFix' src='http://fg.huiguoguo.com{{item.img}}'></image>
         <view class='txt'>
           <view class='p1'>{{item.title}}</view>

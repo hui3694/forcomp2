@@ -5,26 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin:0
+    isLogin:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+
     var that=this
     if (getApp().globalData.user==undefined){
       console.log('未登录');
       that.bindGetUserInfo(null);
     }else{
       that.setData({
-        isLogin:1
+        isLogin:2
       })
     }
 
   },
   //授权回调
   bindGetUserInfo: function (e) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
     var that=this
     wx.getSetting({
       success: function (res) {
@@ -33,7 +40,7 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               that.setData({
-                isLogin: 1
+                isLogin: 2
               })
               console.log('授权成功')
               //console.log(e.detail.userInfo)
@@ -70,10 +77,11 @@ Page({
                             city: res.userInfo.city
                           },
                           success:function(res3){
+                            wx.hideLoading();
+                            console.log(res3.data);
                             that.setData({
-                              userInfo: res.userInfo
+                              userInfo: res3.data
                             })
-
                             getApp().globalData.user = res3.data;
                           }
                         })
@@ -87,7 +95,13 @@ Page({
               });
             }
           })
-        };
+        }else{
+          wx.hideLoading();
+          //等待用户触发授权
+          that.setData({
+            isLogin: 0
+          })
+        }
       }
     });
 

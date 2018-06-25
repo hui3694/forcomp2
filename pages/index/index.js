@@ -5,9 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    column:[
-
-    ],
+    column:[],
     commend:[
       {
         url: '',
@@ -57,6 +55,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
@@ -90,6 +93,8 @@ Page({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_list',
       data: {},
       success: function (res) {
+        wx.hideLoading();
+        
         res.data.forEach((item) => {
           item.desc = item.zhaiyao.substring(0, 50)+'...';
           item.moreShow = 0;

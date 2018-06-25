@@ -62,7 +62,29 @@ Page({
     })
   },
   formPost:function(e){
+    wx.showLoading({
+      title: '提交中',
+      mask: true
+    })
+
     var that = this;
+    if (!e.detail.value.title) {
+      that.showModel('请输入标题');
+      return;
+    }
+    if (!e.detail.value.cont) {
+      that.showModel('请输入产品描述');
+      return;
+    }
+    if (that.data.lat == 0 || that.data.lon==0) {
+      that.showModel('请重新设置定位');
+      return;
+    }
+    if (!e.detail.value.addr) {
+      that.showModel('请输入详细地址');
+      return;
+    }
+    
     //栏目id
     e.detail.value.category = that.data.category[that.data.category1_sel].son[that.data.category2_sel].id;
     e.detail.value.lat = that.data.lat;
@@ -75,8 +97,11 @@ Page({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=product_add',
       data: e.detail.value,
       success:function(res){
+        wx.hideLoading();
+
         wx.showToast({
           title: res.data.msg,
+          mask: true,
           duration: 2000
         })
         setTimeout(function(){
@@ -132,5 +157,12 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  showModel(str){
+    wx.showToast({
+      title: str,
+      icon: 'none',
+      duration: 2000
+    })
   }
 })

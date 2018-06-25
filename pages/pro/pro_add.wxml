@@ -47,7 +47,7 @@
     <view class='item'>
       <view class='hd'>详细地址</view>
       <view class='bd'>
-        <input class='ipt' name='addr' placeholder='请输入位置' value='{{addr}}'></input>
+        <input class='ipt' name='addr' placeholder='请输入详细地址' value='{{addr}}'></input>
       </view>
     </view>
   </view>

@@ -9,13 +9,19 @@ Page({
   data: {
     category: 0,
     list:[],
-    btmMsg: '下拉加载更多...'
+    btmMsg: '下拉加载更多...',
+    noMore: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
     var that=this;
     that.setData({
       category: options.id
@@ -26,6 +32,8 @@ Page({
         category: options.id
       },
       success:function(res){
+        wx.hideLoading();
+
         res.data.forEach((item) => {
           item.cont = item.cont.substring(0, 55) + '...'
         })
@@ -76,6 +84,14 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if (this.data.noMore) {
+      return;
+    }
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    
     var that = this;
     page = page + 1;
     wx.request({
@@ -88,6 +104,14 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+        wx.hideLoading();
+        if (res.data.status == 0) {
+          that.setData({
+            btmMsg: res.data.msg,
+            noMore: true
+          });
+        }
+        
         that.setData({
           btmMsg: '正在加载...'
         });

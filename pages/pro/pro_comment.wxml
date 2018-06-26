@@ -10,22 +10,22 @@
 </view>
 
 <view class='list'>
-  <view class='item' wx:for='{{[1,2,3,4]}}'>
+  <view class='item' wx:for='{{list}}'>
     <view class='name'>
       <text class='hd'>姓名：</text>
-      <text class='bd'>晓辉丶</text>
+      <text class='bd'>{{item.name}}</text>
     </view>
     <view class='tel'>
       <text class='hd'>手机：</text>
-      <text class='bd'>18372801202</text>
+      <text class='bd'>{{item.phone}}</text>
     </view>
     <view class='time'>
       <text class='hd'>时间：</text>
-      <text class='bd'>2018-6-26 18:43:49</text>
+      <text class='bd'>{{item.time}}</text>
     </view>
     <view class='txt'>
       <text class='hd'>内容：</text>
-      <text class='bd'>我司需要大额贷款，请迅速联系。我司需要大额贷款，请迅速联系。</text>
+      <text class='bd'>{{item.cont}}</text>
     </view>
   </view>
 </view>

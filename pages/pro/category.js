@@ -21,7 +21,7 @@ Page({
 
     var that = this;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_category_list',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
       data:{
         city: getApp().globalData.localCity
       },

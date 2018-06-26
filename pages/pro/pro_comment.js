@@ -5,14 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
+    var that = this;
+    wx.request({
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_proUser_comment',
+      data:{
+        uid: getApp().globalData.user.id
+      },
+      success:function(res){
+        wx.hideLoading();
+        that.setData({
+          list: res.data
+        })
+      }
+    })
   },
 
   /**

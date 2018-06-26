@@ -35,6 +35,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    user: null
+    user: null,
+    localCity: '未知'
   }
 })

@@ -9,7 +9,8 @@
     "pages/ucenter/userEdit",
     "pages/pro/pro_add",
     "pages/pro/pro_list",
-    "pages/pro/pro_show"
+    "pages/pro/pro_show",
+    "pages/pro/pro_comment"
   ],
   "tabBar": {
     "list": [

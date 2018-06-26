@@ -9,7 +9,8 @@ Page({
   data: {
     newsList:[],
     btmMsg:'下拉加载更多...',
-    noMore: false
+    noMore: false,
+    isPostback: 0
   },
 
   /**
@@ -37,7 +38,8 @@ Page({
           item.desc = item.zhaiyao.substring(0, 50) + '...';
         })
         that.setData({
-          newsList:res.data
+          newsList:res.data,
+          isPostback: 1
         })
       }
     })
@@ -116,7 +118,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (this.data.isPostback == 1) {
+      this.onLoad()
+    }
   },
 
   /**

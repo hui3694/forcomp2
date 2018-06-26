@@ -33,9 +33,10 @@ Page({
         img: 'http://forcomp.huiguoguo.com/people4.jpg'
       }
     ],
-    news:[
-     
-    ]
+    news:[],
+    cityList:[],
+    localCity:'未知',
+    cityShow: 0
 
   },
   /*moreShow*/
@@ -60,31 +61,50 @@ Page({
       mask: true
     })
 
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        console.log(res);
-      }
-    })
-
     this.fun();
-
-    wx.request({
-      url: 'https://api.map.baidu.com/geocoder/v2/?ak=DyRqXPh8x25Od6N5XEiqSeuTgyts9nGu&location=31.11325,121.38206&output=json',
-      success:function(res){
-          
-        console.log(res);
-      }
-    })
+    
     //load
     var that = this;
-    //pro
+    //pro_category
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
       data: {},
       success: function (res) {
         that.setData({
           column: res.data
+        })
+      }
+    })
+    //pro_city
+    wx.request({
+      url: 'http://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_city',
+      success:function(res){
+        that.setData({
+          cityList:res.data
+        })
+
+        wx.getLocation({
+          type: 'wgs84',
+          success: function (res2) {
+            //获取指定位置城市
+            wx.request({
+              url: 'https://api.map.baidu.com/geocoder/v2/?ak=DyRqXPh8x25Od6N5XEiqSeuTgyts9nGu&location=' + res.latitude + ',' + res.longitude + '&output=json',
+              success: function (res3) {
+                console.log(res3.data.result.addressComponent.city);
+                //找到当前城市并选中
+                that.data.localCity = res.data[0].city;
+                for (var index in res.data) {
+                  if (res.data[index].city == res3.data.result.addressComponent.city){
+                    that.data.localCity = res.data[index].city;
+                  }
+                }
+                that.setData({
+                  localCity: that.data.localCity
+                })
+                getApp().globalData.localCity = that.data.localCity;
+              }
+            })
+          }
         })
       }
     })
@@ -174,5 +194,31 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  showCity:function(){
+    var that=this;
+    if(that.data.cityShow==1){
+      that.data.cityShow = 0;
+    }else{
+      that.data.cityShow = 1;
+    }
+    that.setData({
+      cityShow: that.data.cityShow
+    })
+  },
+  cityClick:function(e){
+    var that=this;
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    that.setData({
+      localCity: that.data.cityList[index].city
+    });
+    getApp().globalData.localCity = that.data.cityList[index].city;
+  },
+  searchSubmit:function(e){
+    wx.navigateTo({
+      url: '../pro/pro_list?keywords=' + e.detail.value
+    })
   }
+
 })

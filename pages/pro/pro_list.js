@@ -10,7 +10,8 @@ Page({
     category: 0,
     list:[],
     btmMsg: '下拉加载更多...',
-    noMore: false
+    noMore: false,
+    keywords:''
   },
 
   /**
@@ -24,15 +25,26 @@ Page({
 
     var that=this;
     that.setData({
-      category: options.id
+      category: options.id == undefined ? 0 : options.id,
+      keywords: options.keywords == undefined ? '' : options.keywords
+      
     })
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_list',
       data:{
-        category: options.id
+        category: that.data.category,
+        city: getApp().globalData.localCity,
+        keywords: that.data.keywords
       },
       success:function(res){
         wx.hideLoading();
+        if (res.data.status == 0) {
+          that.setData({
+            btmMsg: res.data.msg,
+            noMore: true
+          });
+          return;
+        }
 
         res.data.forEach((item) => {
           item.cont = item.cont.substring(0, 55) + '...'
@@ -98,18 +110,22 @@ Page({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_list',
       data: {
         page: page,
-        category: that.data.category
+        category: that.data.category,
+        city: getApp().globalData.localCity,
+        keywords: that.data.keywords
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         wx.hideLoading();
+
         if (res.data.status == 0) {
           that.setData({
             btmMsg: res.data.msg,
             noMore: true
           });
+          return;
         }
         
         that.setData({

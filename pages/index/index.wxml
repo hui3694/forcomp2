@@ -82,8 +82,8 @@
         <view class='more' data-index='{{index}}' bindtap='moreShow'>
           <image mode='widthFix' src='http://forcomp.huiguoguo.com/icon_more.png'></image>
           <view class='more_hide  {{item.moreShow==0?"none":""}}'>
-            <navigator>分享链接</navigator>
-            <navigator>收藏</navigator>
+            <button open-type="share" data-index='{{index}}' data-id='{{item.id}}' bindtap='onShareAppMessage'>分享链接</button>
+            <button data-id='{{item.id}}'  bindtap='collect'>收藏</button>
           </view>
         </view>
       </view>

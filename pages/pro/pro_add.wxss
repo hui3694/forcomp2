@@ -10,9 +10,11 @@
   text-align: center;
 }
 .header .item.on{
-  background: #179B16;
+  /* background: #179B16;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 5px; */
+  color: #55b737;
+  border-bottom: 1px solid #55b737;
 }
 .header .item navigator{
   display: block;

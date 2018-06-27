@@ -10,7 +10,9 @@
     "pages/pro/pro_add",
     "pages/pro/pro_list",
     "pages/pro/pro_show",
-    "pages/pro/pro_comment"
+    "pages/pro/pro_comment",
+    "pages/ucenter/collect",
+    "pages/ucenter/browse"
   ],
   "tabBar": {
     "list": [

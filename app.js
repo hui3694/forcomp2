@@ -37,5 +37,25 @@ App({
     userInfo: null,
     user: null,
     localCity: '未知'
+  },
+  goLogin:function(){
+    wx.hideLoading();
+    wx.showToast({
+      title: '未登录，即将跳转登录',
+      icon: 'none',
+      mask: true,
+      duration: 2000
+    })
+
+    setTimeout(function () {
+      wx.switchTab({
+        url: '../ucenter/index'
+      })
+    }, 2000)
+  },
+  isLogin:function(){
+    if (getApp().globalData.user == null) {
+      getApp().goLogin();
+    }
   }
 })

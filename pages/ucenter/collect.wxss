@@ -1,0 +1,42 @@
+/* pages/ucenter/collect.wxss */
+.header{
+  margin-top: 8px;
+  margin-bottom: 15px;
+  background: #fff;
+}
+.header .item{
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+.header .item.on{
+  /* background: #179B16;
+  color: #fff;
+  border-radius: 5px; */
+  color: #55b737;
+  border-bottom: 1px solid #55b737;
+}
+.header .item view{
+  display: block;
+  line-height: 36px;
+}
+
+.list .item{
+  background: #fff;
+  padding: 10px;
+  margin-top: 8px;
+}
+.item .txt{
+  /* width: 63%;
+  float: left; */
+}
+.item .txt .p_title{
+  font-size: 16px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+.item .txt .p_zhaiyao{
+  font-size: 13px;
+  color: #808080;
+}

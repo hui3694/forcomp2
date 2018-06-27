@@ -60,11 +60,14 @@ Page({
     })
   },
   collect: function () {
+    wx.showLoading({
+      title: '提交中',
+      mask: true
+    })
+
     var that = this;
     if (getApp().globalData.user == undefined) {
-      wx.switchTab({
-        url: '../ucenter/index'
-      })
+      getApp().goLogin();
       return;
     }
 
@@ -72,7 +75,7 @@ Page({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=news_view',
       data: {
         uid: getApp().globalData.user.id,
-        isPN: 2,   //news
+        isPN: 1,   //pro
         type: 2,
         id: that.data.model.id
       },
@@ -80,7 +83,7 @@ Page({
         that.setData({
           'model.isCollect': that.data.model.isCollect == 1 ? 0 : 1
         })
-
+        wx.hideLoading();
         wx.showToast({
           title: res.data.msg,
           icon: 'success',
@@ -104,9 +107,7 @@ Page({
     console.log(e.detail.value.cont);
     var that = this
     if (getApp().globalData.user == null) {
-      wx.switchTab({
-        url: '../ucenter/index'
-      })
+      getApp().goLogin();
       return;
     }
 
@@ -199,7 +200,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.setData({
+      isPost:0,
+    });
+    this.onLoad();
   },
 
   /**

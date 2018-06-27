@@ -64,11 +64,14 @@ Page({
 
   },
   collect:function(){
+    wx.showLoading({
+      title: '提交中',
+      mask: true
+    })
+
     var that=this;
     if (getApp().globalData.user == undefined){
-      wx.switchTab({
-        url: '../ucenter/index'
-      })
+      getApp().goLogin();
       return;
     }
 
@@ -81,6 +84,7 @@ Page({
         id:that.data.model.id
       }, 
       success: function (res) {
+        wx.hideLoading();
         that.setData({
           'model.isCollect': that.data.model.isCollect==1?0:1
         })
@@ -108,9 +112,7 @@ Page({
     console.log(e.detail.value.cont);
     var that=this
     if (getApp().globalData.user == null) {
-      wx.switchTab({
-        url: '../ucenter/index'
-      })
+      getApp().goLogin();
       return;
     }
 

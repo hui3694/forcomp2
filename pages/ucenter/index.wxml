@@ -53,13 +53,13 @@
     </navigator>
   </view>
   <view class='item'>
-    <navigator>
+    <navigator url='browse'>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon7.png'></image>
       <view>我的足迹</view>
     </navigator>
   </view>
   <view class='item'>
-    <navigator>
+    <navigator url='collect'>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon8.png'></image>
       <view>我的收藏</view>
     </navigator>

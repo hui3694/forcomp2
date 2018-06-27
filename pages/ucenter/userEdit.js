@@ -13,11 +13,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
+    var that=this;
     that.setData({
       user: getApp().globalData.user
-    })
-    
+    });
   },
   formPost:function(e){
     wx.showLoading({
@@ -26,13 +25,25 @@ Page({
     })
 
     var that=this;
-    e.detail.value.openid=that.data.user.openid;
+    e.detail.value.openid = that.data.user.openid;
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=update_user',
       data:e.detail.value,
       success:function(res){
-        wx.hideLoading();
-        
+        wx.request({
+          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=register',
+          data: {
+            openid: getApp().globalData.user.openid
+          },
+          success: function (res3) {
+            wx.hideLoading();
+            that.setData({
+              userInfo: res3.data
+            })
+            getApp().globalData.user = res3.data;
+          }
+        })
+
         if(res.data.status==1){
           wx.showToast({
             title: res.data.msg,

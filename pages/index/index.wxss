@@ -201,10 +201,15 @@
   padding: 10px 0;
   border: 1px solid #eee;
 }
-.index_news .item .newsMenu .more .more_hide navigator{
+.index_news .item .newsMenu .more .more_hide button{
   display: block;
   font-size: 16px;
   line-height: 28px;
   width: 100px;
   text-indent: 12px;
+  padding: 0;
+  background: none;
+}
+.index_news .item .newsMenu .more .more_hide button::after{
+  border: none;
 }

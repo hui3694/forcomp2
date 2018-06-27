@@ -192,8 +192,32 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (e) {
+    var that = this;
+    var id = e.target.dataset.id;
+    var index = e.target.dataset.index;
+    var shareObj = {
+      title: "转发的标题", // 默认是小程序的名称(可以写slogan等)
+      path: '/pages/news/news_show?id=' + id,  // 默认是当前页面，必须是以‘/’开头的完整路径
+      imageUrl: 'https://fg.huiguoguo.com' + that.data.news[index].img, //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+      success: function (res) {
+        // 转发成功之后的回调
+        if (res.errMsg == 'shareAppMessage:ok') {
+        }
+      },
+      fail: function (res) {
+        // 转发失败之后的回调
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          // 用户取消转发
+        } else if (res.errMsg == 'shareAppMessage:fail') {
+          // 转发失败，其中 detail message 为详细失败信息
+        }
+      },
+      complete: function () {
+        // 转发结束之后的回调（转发成不成功都会执行）
+      }
+    };
+    return shareObj;
   },
   showCity:function(){
     var that=this;
@@ -218,6 +242,37 @@ Page({
   searchSubmit:function(e){
     wx.navigateTo({
       url: '../pro/pro_list?keywords=' + e.detail.value
+    })
+  }, //收藏
+  collect: function (e) {
+    wx.showLoading({
+      title: '提交中',
+      mask: true
+    })
+
+    var that = this;
+    if (getApp().globalData.user == undefined) {
+      getApp().goLogin();
+      return;
+    }
+
+    wx.request({
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=news_view',
+      data: {
+        uid: getApp().globalData.user.id,
+        isPN: 2,   //news
+        type: 2,
+        id: e.target.dataset.id
+      },
+      success: function (res) {
+        wx.hideLoading();
+
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'success',
+          duration: 2000
+        })
+      }
     })
   }
 

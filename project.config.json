@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -50,7 +50,7 @@
 				{
 					"id": 2,
 					"name": "demo2",
-					"pathName": "pages/pro/pro_comment",
+					"pathName": "pages/ucenter/pm",
 					"query": ""
 				}
 			]

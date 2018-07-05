@@ -1,0 +1,54 @@
+/* pages/ucenter/pm.wxss */
+.list{
+  background: #fff;
+}
+.list .item{
+  margin: 0 10px;
+  line-height: 38px;
+  border-bottom: 1px solid #eee;
+}
+.list .item .hd{
+  width: 80px;
+  float: left;
+  line-height: 38px;
+}
+.list .item .hd label{
+  font-size: 14px;
+}
+.list .item .bd{
+  margin-left:90px; 
+}
+.list .item .bd .ipt{
+  line-height: 38px;
+  height: 38px;
+  font-size: 14px;
+}
+.list .item .bd .rad label{
+  margin-right: 15px;
+  font-size: 14px;
+}
+.list .item .bd picker{
+  line-height: 38px;
+  height: 38px;
+}
+.list .item .bd picker view{
+  width: 100%;
+}
+.list .item .area textarea{
+  padding: 10px;
+  line-height: inherit;
+  font-size: 14px;
+}
+
+
+.submit{
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 85%;
+}
+.submit button{
+  background:#1aad19;
+  color: #fff;
+  line-height: 38px;
+  font-size: 16px;
+}

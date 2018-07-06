@@ -65,7 +65,7 @@
     </navigator>
   </view>
   <view class='item'>
-    <navigator url='../pro/pro_add'>
+    <navigator url='{{userInfo.level>0?"../pro/pro_add":"../ucenter/pm"}}'>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon9.png'></image>
       <view>产品信息</view>
     </navigator>

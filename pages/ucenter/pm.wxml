@@ -1,16 +1,16 @@
 <!--pages/ucenter/pm.wxml-->
-<form bindsubmit='formPost'>
+<form bindsubmit='formPost' wx:if="{{isEnabled==0}}">
   <view class='list'>
     <view class='item'>
       <view class='hd'>姓名</view>
       <view class='bd'>
-        <input class='ipt' name='title'></input>
+        <input name='name' class='ipt' placeholder='请输入您的真实姓名'></input>
       </view>
     </view>
     <view class='item'>
       <view class='hd'>生日</view>
       <view class='bd'>
-        <picker mode="date" value="" start="1950-1-1" bindchange="bindBirthday">
+        <picker name='birthday' mode="date" value="1990-1-1" start="1950-1-1" bindchange="bindBirthday">
           <view class="picker">{{birthday}}</view>
         </picker>
       </view>
@@ -29,33 +29,61 @@
     <view class='item'>
       <view class='hd'>籍贯</view>
       <view class='bd'>
-        <input class='ipt' name='title'></input>
+        <input class='ipt' placeholder='请输入您的户口所在地' name='origin'></input>
       </view>
     </view>
     <view class='item'>
       <view class='hd'>电话</view>
       <view class='bd'>
-        <input class='ipt' name='title'></input>
+        <input class='ipt' placeholder='请输入您的联系方式' name='phone'></input>
       </view>
     </view>
     <view class='item'>
       <view class='hd'>公司名称</view>
       <view class='bd'>
-        <input class='ipt' name='title'></input>
+        <input class='ipt' placeholder='请输入您所在公司的完整名称' name='comName'></input>
       </view>
     </view>
     <view class='item'>
       <view class='hd'>岗位</view>
       <view class='bd'>
-        <input class='ipt' name='title'></input>
+        <input class='ipt' placeholder='请输入您在公司所在的岗位' name='job'></input>
       </view>
     </view>
     <view class='item'>
       <view class='hd'>入职年份</view>
       <view class='bd'>
-         <picker mode="date" fields="year" value="" start="1950" end="2018" bindchange="bindTimeChange">
+         <picker name='year' mode="date" fields="year" value="{{year}}" start="1950" end="{{yearNow}}" bindchange="bindYear">
           <view class="picker">{{year}}</view>
         </picker>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='hd'>工牌照片</view>
+      <view class='bd'>
+        <view class="image-plus image-plus-nb" bindtap="chooseImage">
+          <block wx:if="{{imageSrc}}">
+            <image src="{{imageSrc}}" class="image" mode="aspectFit"></image>
+          </block>
+          <block wx:else>
+            <view class="image-plus-horizontal"></view>
+            <view class="image-plus-vertical"></view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='hd'>生活照</view>
+      <view class='bd'>
+        <view class="image-plus image-plus-nb" bindtap="chooseImage2">
+          <block wx:if="{{imageSrc2}}">
+            <image src="{{imageSrc2}}" class="image" mode="aspectFit"></image>
+          </block>
+          <block wx:else>
+            <view class="image-plus-horizontal"></view>
+            <view class="image-plus-vertical"></view>
+          </block>
+        </view>
       </view>
     </view>
 
@@ -66,3 +94,7 @@
     <button form-type='submit'>发布</button>
   </view>
 </form>
+
+<view class='tip' wx:else>
+  <view class='txt'>{{msg}}</view>
+</view>

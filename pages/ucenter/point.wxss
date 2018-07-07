@@ -1,0 +1,31 @@
+/* pages/ucenter/point.wxss */
+.header{
+  line-height: 30px;
+  padding: 0 10px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.list{
+  background: #fff;
+}
+.list .item{
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+  padding: 0 10px;
+  overflow: auto;
+}
+.list .item .t{
+  width: 60%;
+  float: left;
+  font-size: 14px;
+}
+.list .item .v{
+  width: 40%;
+  float: right;
+}
+.list .item .d{
+  font-size: 12px;
+  float: right;
+  color: #999;
+}

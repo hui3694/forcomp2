@@ -23,7 +23,7 @@
     </navigator>
   </view>
   <view class='item'>
-    <navigator>
+    <navigator url='point'>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon2.png'></image>
       <view>我的积分</view>
     </navigator>
@@ -38,18 +38,6 @@
     <navigator>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon4.png'></image>
       <view>我的红包</view>
-    </navigator>
-  </view>
-  <view class='item'>
-    <navigator>
-      <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon5.png'></image>
-      <view>我的优惠券</view>
-    </navigator>
-  </view>
-  <view class='item'>
-    <navigator>
-      <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon6.png'></image>
-      <view>疯狂砸金蛋</view>
     </navigator>
   </view>
   <view class='item'>

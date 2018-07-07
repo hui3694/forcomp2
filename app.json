@@ -13,7 +13,8 @@
     "pages/pro/pro_comment",
     "pages/ucenter/collect",
     "pages/ucenter/browse",
-    "pages/ucenter/pm"
+    "pages/ucenter/pm",
+    "pages/ucenter/point"
   ],
   "tabBar": {
     "list": [

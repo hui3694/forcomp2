@@ -1,0 +1,17 @@
+<!--pages/ucenter/point.wxml-->
+<view class='header'>
+  当前积分：0
+</view>
+
+<view class='list'>
+  <view class='item'>
+    <view class='t'>每天登录获得积分</view>
+    <view class='v'>+10<view class='d'>2018-7-7 14:52:51</view></view>
+    <view class='clear'></view>
+  </view>
+  <view class='item'>
+    <view class='t'>每天登录获得积分</view>
+    <view class='v'>+10<view class='d'>2018-7-7 14:52:51</view></view>
+    <view class='clear'></view>
+  </view>
+</view>

@@ -1,9 +1,12 @@
 /* pages/ucenter/point.wxss */
 .header{
-  line-height: 30px;
+  line-height: 40px;
   padding: 0 10px;
   background: #fff;
   margin-bottom: 10px;
+}
+.header .exchange{
+  float: right;
 }
 
 .list{

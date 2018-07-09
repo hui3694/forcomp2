@@ -5,14 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    userInfo:null,
+    list:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    that.setData({
+      userInfo: getApp().globalData.user
+    })
+
+    wx.request({
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_point_list',
+      data:{
+        uid: getApp().globalData.user.id
+      },
+      success:function(res){
+        that.setData({
+          list:res.data
+        })
+      }
+    })
   },
 
   /**

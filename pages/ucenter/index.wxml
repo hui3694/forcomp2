@@ -16,11 +16,11 @@
 </view>
 
 <view class='menu' wx:if='{{isLogin==2}}'>
-  <view class='item'>
-    <navigator>
+  <view class='item' bindtap='signIn_click'>
+    <view>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon1.png'></image>
       <view>每日签到</view>
-    </navigator>
+    </view>
   </view>
   <view class='item'>
     <navigator url='point'>

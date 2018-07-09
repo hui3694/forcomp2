@@ -153,5 +153,27 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  signIn_click:function(){
+    wx.showLoading({
+      title: '签到中',
+      mask: true
+    })
+
+    wx.request({
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=point_log',
+      data:{
+        type:1,
+        uid: getApp().globalData.user.id
+      },
+      success:function(res){
+        wx.hideLoading();
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 2000
+        })  
+      }
+    })
   }
 })

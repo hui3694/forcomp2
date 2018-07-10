@@ -13,22 +13,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
-    that.setData({
-      userInfo: getApp().globalData.user
+    wx.showLoading({
+      title: '加载中',
+      mask: true
     })
-
+    var that=this;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_point_list',
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=register',
       data:{
-        uid: getApp().globalData.user.id
+        openid: that.data.userInfo.openid
       },
       success:function(res){
         that.setData({
-          list:res.data
+          userInfo: res.data
+        })
+        getApp().globalData.user = res.data;
+        //----------------------------------
+        wx.request({
+          url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_point_list',
+          data: {
+            uid: getApp().globalData.user.id
+          },
+          success: function (res) {
+            wx.hideLoading();
+            that.setData({
+              list: res.data
+            })
+          }
         })
       }
     })
+
   },
 
   /**

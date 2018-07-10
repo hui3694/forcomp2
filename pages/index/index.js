@@ -56,6 +56,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showShareMenu({
+      withShareTicket: true,
+      success: function (res) {
+        // 分享成功
+        console.log('shareMenu share success')
+        console.log('分享' + res)
+      },
+      fail: function (res) {
+        // 分享失败
+        console.log(res)
+      }
+    })
+    //----------------
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -191,25 +204,50 @@ Page({
 
   /**
    * 用户点击右上角分享
-   */
+   */  
   onShareAppMessage: function (e) {
     var that = this;
     var id = e.target.dataset.id;
+    var title = e.target.dataset.title;
     var index = e.target.dataset.index;
     var shareObj = {
-      title: "转发的标题", // 默认是小程序的名称(可以写slogan等)
+      title: title, // 默认是小程序的名称(可以写slogan等)
       path: '/pages/news/news_show?id=' + id,  // 默认是当前页面，必须是以‘/’开头的完整路径
       imageUrl: 'https://fg.huiguoguo.com' + that.data.news[index].img, //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
       success: function (res) {
         // 转发成功之后的回调
         if (res.errMsg == 'shareAppMessage:ok') {
+          console.log('成功转发');
+          if(res.shareTickets==undefined){
+            console.log('转发到好友');
+          }else{
+            console.log('转发到群');
+          }
+
         }
+        wx.getShareInfo({
+          shareTicket: res.shareTickets[0],
+          success: function (res) { 
+            console.log(res)
+            wx.request({
+              url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_qunID',
+              data: {
+                encryptedData: res.encryptedData,
+                iv:res.iv
+              }
+            })
+           },
+          fail: function (res) { console.log(res) },
+          complete: function (res) { console.log(res) }
+        })
       },
       fail: function (res) {
         // 转发失败之后的回调
         if (res.errMsg == 'shareAppMessage:fail cancel') {
+          console.log('取消转发');
           // 用户取消转发
         } else if (res.errMsg == 'shareAppMessage:fail') {
+          console.log('转发出错');
           // 转发失败，其中 detail message 为详细失败信息
         }
       },

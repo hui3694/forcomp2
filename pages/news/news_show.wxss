@@ -100,5 +100,6 @@ page{
   background: #fff;
 }
 .post textarea{
-  padding: 10px;
+  margin: 10px auto;
+  width: 95%;
 }

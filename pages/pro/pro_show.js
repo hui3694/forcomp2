@@ -122,6 +122,16 @@ Page({
         cont: e.detail.value.cont
       },
       success: function (res) {
+        wx.request({
+          url: 'http://localhost:40620/tools/app_ajax.ashx?action=point_log',
+          data: {
+            type: 2,//评论
+            uid: getApp().globalData.user.id,
+            isPN: 1,
+            nid: that.data.model.id
+          }
+        });
+
         if(res.data.status==1){
           wx.showToast({
             title: res.data.msg,

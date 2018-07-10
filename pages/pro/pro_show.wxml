@@ -3,7 +3,14 @@
 
 <view class='header'>
   <view class='n_title'>{{model.title}}</view>
-  <view class='time'>{{model.add_time}}</view>
+  <view class='time'>
+    {{model.add_time}}
+
+    <view class='pm_tel'>
+      <view class='pmName'>王经理</view>
+      <view class='pmTel'>18312341234</view>
+    </view>
+  </view>
 </view>
 
 

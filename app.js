@@ -57,5 +57,13 @@ App({
     if (getApp().globalData.user == null) {
       getApp().goLogin();
     }
+  },
+  goShare:function(){
+    wx.request({
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=go_share',
+      data: {
+        uid: getApp().globalData.user == null ? 0 : getApp().globalData.user.id
+      }
+    })
   }
 })

@@ -207,7 +207,11 @@ Page({
    */  
   onShareAppMessage: function (e) {
     var that = this;
+    if(e.from=='menu'){
+      return;
+    }
     var id = e.target.dataset.id;
+    
     var title = e.target.dataset.title;
     var index = e.target.dataset.index;
     var shareObj = {
@@ -222,24 +226,9 @@ Page({
             console.log('转发到好友');
           }else{
             console.log('转发到群');
+            getApp().goShare();
           }
-
         }
-        wx.getShareInfo({
-          shareTicket: res.shareTickets[0],
-          success: function (res) { 
-            console.log(res)
-            wx.request({
-              url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_qunID',
-              data: {
-                encryptedData: res.encryptedData,
-                iv:res.iv
-              }
-            })
-           },
-          fail: function (res) { console.log(res) },
-          complete: function (res) { console.log(res) }
-        })
       },
       fail: function (res) {
         // 转发失败之后的回调

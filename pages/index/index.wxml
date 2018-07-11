@@ -82,7 +82,7 @@
         <view class='more' data-index='{{index}}' bindtap='moreShow'>
           <image mode='widthFix' src='http://forcomp.huiguoguo.com/icon_more.png'></image>
           <view class='more_hide  {{item.moreShow==0?"none":""}}'>
-            <button open-type="share" data-index='{{index}}' data-id='{{item.id}}' data-title='{{item.title}}' bindtap='onShareAppMessage'>分享链接</button>
+            <button open-type="share" data-index='{{index}}' data-id='{{item.id}}' data-title='{{item.title}}' bindtap='onShareArticle'>分享链接</button>
             <button data-id='{{item.id}}'  bindtap='collect'>收藏</button>
           </view>
         </view>

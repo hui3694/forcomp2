@@ -228,5 +228,26 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  callPM:function(e){
+    var tel = e.currentTarget.dataset.tel;
+    wx.showActionSheet({
+      itemList: ['拨打电话'],
+      success: function (res) {
+        wx.request({
+          url: 'http://localhost:40620/tools/app_ajax.ashx?action=call_pm',
+          data:{
+            uid: getApp().globalData.user.id,
+            cid: e.currentTarget.dataset.cid
+          }
+        })
+        wx.makePhoneCall({
+          phoneNumber: tel //仅为示例，并非真实的电话号码
+        })
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
   }
 })

@@ -18,6 +18,9 @@ Page({
       mask: true
     })
     var that=this;
+    that.setData({
+      userInfo: getApp().globalData.user
+    })
     wx.request({
       url: 'http://localhost:40620/tools/app_ajax.ashx?action=register',
       data:{

@@ -18,6 +18,16 @@ page{
   font-size: 14px;
   color: #999;
 }
+.header .pm_tel{
+  width: 50%;
+  float: right;
+  text-align: right;
+  color: #333;
+  padding-right: 20px;
+}
+.header .pm_tel text{
+  color: #2A72C5;
+}
 
 .cont{
   background: #fff;

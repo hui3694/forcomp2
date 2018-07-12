@@ -12,9 +12,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-
     var that=this
+    that.setData({
+      pid: options.id == undefined ? 0 : options.id
+    })
     if (getApp().globalData.user==undefined){
       console.log('未登录');
       that.bindGetUserInfo(null);
@@ -70,7 +71,7 @@ Page({
                             avatar: res.userInfo.avatarUrl,
                             nickname: res.userInfo.nickName,
                             openid: res2.data.openid,
-                            parent_id: 0,
+                            parent_id: that.data.pid,
                             gender: res.userInfo.gender,
                             country: res.userInfo.country,
                             province: res.userInfo.province,
@@ -111,6 +112,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.setData({
+      userInfo: getApp().globalData.user
+    })
   },
   
   /**
@@ -152,7 +156,31 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    var shareObj = {
+      title: getApp().globalData.user.nickname + '邀请您加入阜哥', // 默认是小程序的名称(可以写slogan等)
+      path: '/pages/ucenter/index?id=' + getApp().globalData.user.id,  // 默认是当前页面，必须是以‘/’开头的完整路径
+      imageUrl: 'http://forcomp.huiguoguo.com/banner1.jpg', //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+      success: function (res) {
+        // 转发成功之后的回调
+        if (res.errMsg == 'shareAppMessage:ok') {
+          // 转发成功
+        }
+      },
+      fail: function (res) {
+        // 转发失败之后的回调
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          console.log('取消转发');
+          // 用户取消转发
+        } else if (res.errMsg == 'shareAppMessage:fail') {
+          console.log('转发出错');
+          // 转发失败，其中 detail message 为详细失败信息
+        }
+      },
+      complete: function () {
+        // 转发结束之后的回调（转发成不成功都会执行）
+      }
+    };
+    return shareObj;
   },
   signIn_click:function(){
     wx.showLoading({

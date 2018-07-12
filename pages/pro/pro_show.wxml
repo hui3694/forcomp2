@@ -6,8 +6,8 @@
   <view class='time'>
     {{model.add_time}}
 
-    <view class='pm_tel' data-cid='1'  data-tel='18312341234' bindtap='callPM'>
-      <view class='pmName'>王经理：<text>18312341234</text></view>
+    <view class='pm_tel' data-cid='{{model.pm_id}}'  data-tel='{{model.pm_tel}}' bindtap='callPM'>
+      <view class='pmName'><text>联系产品经理</text></view>
     </view>
   </view>
 </view>

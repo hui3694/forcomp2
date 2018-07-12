@@ -33,6 +33,7 @@
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon3.png'></image>
       <view>推荐有礼</view>
     </navigator>
+    <button class='btnShare' open-type="share" bindtap='onShareArticle'></button>
   </view>
   <view class='item'>
     <navigator>

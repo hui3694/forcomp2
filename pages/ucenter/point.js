@@ -6,7 +6,8 @@ Page({
    */
   data: {
     userInfo:null,
-    list:null
+    list:null,
+    msgShow:false
   },
 
   /**
@@ -95,6 +96,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
+  },
+  showMsg:function(){
+    this.setData({
+      msgShow:true
+    })
+  },
+  hideMsg:function(){
+    this.setData({
+      msgShow: false
+    })
   }
 })

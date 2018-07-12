@@ -1,13 +1,24 @@
 <!--pages/ucenter/point.wxml-->
 <view class='header'>
   当前积分：{{userInfo.point}}
+  <image bindtap='showMsg' class='i' mode='widthFix' src='http://forcomp.huiguoguo.com/icon_info.png'></image>
   <view class='exchange'>兑换</view>
 </view>
 
 <view class='list'>
   <view class='item' wx:for='{{list}}'>
     <view class='t'>{{item.remark}}</view>
-    <view class='v'>{{item.value>=0?'+'+item.value:'-'+item.value}}<view class='d'>{{item.time}}</view></view>
+    <view class='v'>{{item.value>=0?'+'+item.value:item.value}}<view class='d'>{{item.time}}</view></view>
     <view class='clear'></view>
+  </view>
+</view>
+
+<view class='msg' wx:if='{{msgShow}}'>
+  <view class='bg' bindtap='hideMsg'></view>
+  <view class='txt'>
+    <view>1、每天签到获得5点积分。</view>
+    <view>2、发表评论获得5积分，每款产品，每条资讯，只只能获得一次。</view>
+    <view>3、每天分享到3个群获得10积分。</view>
+    <view>4、首次联系产品经理消费30积分。</view>
   </view>
 </view>

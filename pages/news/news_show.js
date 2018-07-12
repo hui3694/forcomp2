@@ -17,6 +17,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+
     var that=this;
     if(that.data.id==0){
       that.setData({
@@ -47,21 +55,22 @@ Page({
           title: res.data.title//页面标题为路由参数
         });
 
-      }
-    })
-    //获取评论列表
-    wx.request({
-      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_commend',
-      data:{
-        id:that.data.id
-      },
-      success:function(res){
-        that.setData({
-          comList:res.data
+        //获取评论列表
+        wx.request({
+          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_news_commend',
+          data: {
+            id: that.data.id
+          },
+          success: function (res2) {
+            wx.hideLoading();
+            that.setData({
+              comList: res2.data
+            })
+          }
         })
+
       }
     })
-
   },
   collect:function(){
     wx.showLoading({

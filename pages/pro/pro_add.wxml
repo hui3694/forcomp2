@@ -1,10 +1,13 @@
 <!--pages/pro/pro_add.wxml-->
 <view class='header'>
+  <view class='item on'>
+    <navigator>发布产品</navigator>
+  </view>
   <view class='item'>
     <navigator url='pro_comment' >客户留言</navigator>
   </view>
-  <view class='item on'>
-    <navigator>发布产品</navigator>
+  <view class='item'>
+    <navigator url='pm_pro'>产品管理</navigator>
   </view>
   <view class='clear'></view>
 </view>
@@ -14,7 +17,7 @@
     <view class='item'>
       <view class='hd'>标题</view>
       <view class='bd'>
-        <input class='ipt' name='title'></input>
+        <input class='ipt' name='title' value='{{title}}'></input>
       </view>
     </view>
     <view class='item'>
@@ -35,7 +38,7 @@
     </view>
     <view class='item'>
       <view class='area'>
-        <textarea name='cont' placeholder='输入产品描述'></textarea>
+        <textarea name='cont' placeholder='输入产品描述' value='{{cont}}'></textarea>
       </view>
     </view>
     <view class='item'>

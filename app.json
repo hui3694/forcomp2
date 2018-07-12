@@ -14,7 +14,8 @@
     "pages/ucenter/collect",
     "pages/ucenter/browse",
     "pages/ucenter/pm",
-    "pages/ucenter/point"
+    "pages/ucenter/point",
+    "pages/pro/pm_pro"
   ],
   "tabBar": {
     "list": [

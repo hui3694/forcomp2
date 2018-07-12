@@ -1,10 +1,13 @@
 <!--pages/pro/pro_comment.wxml-->
 <view class='header'>
+<view class='item'>
+    <navigator url='pro_add'>发布产品</navigator>
+  </view>
   <view class='item on'>
     <navigator>客户留言</navigator>
   </view>
   <view class='item'>
-    <navigator url='pro_add'>发布产品</navigator>
+    <navigator url='pm_pro'>产品管理</navigator>
   </view>
   <view class='clear'></view>
 </view>

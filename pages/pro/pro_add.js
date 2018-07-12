@@ -11,22 +11,36 @@ Page({
     lat: 0,
     lon: 0,
     addr: '请输入位置',
-    city:''
+    city:'',
+    id: 0
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    that.setData({
+      id: options.id == undefined ? 0 : options.id
+    })
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',
       success:function(res){
-        console.log(res.data);
         that.setData({
           category:res.data
         })
+        console.log(res.data)
+        if (that.data.id == 0) {
+          wx.hideLoading();
+        } else {
+          that.getModel();
+        }
       }
     })
+    
   },
   category_sel1: function (e) {
     this.setData({
@@ -90,11 +104,12 @@ Page({
     e.detail.value.lat = that.data.lat;
     e.detail.value.lon = that.data.lon;
     e.detail.value.city = that.data.city;
-    e.detail.value.openid = getApp().globalData.user.openid;
+    e.detail.value.uid = getApp().globalData.user.id;
+    e.detail.value.id = that.data.id;
     console.log(e.detail.value);
     
     wx.request({
-      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=product_add',
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=product_add',
       data: e.detail.value,
       success:function(res){
         wx.hideLoading();
@@ -163,6 +178,40 @@ Page({
       title: str,
       icon: 'none',
       duration: 2000
+    })
+  },
+  getModel:function(){
+    var that=this;
+    
+    wx.request({
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pro_model',
+      data:{
+        id: that.data.id
+      },
+      success:function(res){
+        wx.hideLoading();
+        var c1 = 0;
+        var c2 = 0;
+        for (var i in that.data.category) {
+          if(that.data.category[i].id==res.data.category){
+            c1 = i;
+            for (var j in that.data.category[i].son) {
+              if (that.data.category[j].id == res.data.category2) {
+                c2 = j;
+              }
+            }
+          }
+        }
+        that.setData({
+          title: res.data.title,
+          category1_sel: c1,
+          category2_sel: c2,
+          cont: res.data.cont,
+          lon: res.data.lon,
+          lat: res.data.lat,
+          addr: res.data.addr
+        })
+      }
     })
   }
 })

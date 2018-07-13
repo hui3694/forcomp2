@@ -30,7 +30,7 @@ Page({
       
     })
     wx.request({
-      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_list',
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pro_list',
       data:{
         category: that.data.category,
         city: getApp().globalData.localCity,

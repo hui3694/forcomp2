@@ -269,54 +269,61 @@ Page({
   callPM:function(e){
     var tel = e.currentTarget.dataset.tel;
     wx.showActionSheet({
-      itemList: ['拨打电话'],
+      itemList: ['联系','评价'],
       success: function (res) {
         if (getApp().globalData.user == null) {
           getApp().goLogin();
           return;
         };
-        wx.showModal({
-          title: '提示',
-          content: '首次联系产品经理将消耗30积分，是否确定？',
-          success: function (r) {
-            if (r.confirm) {
-              console.log('用户点击确定')
-              wx.showLoading({
-                title: '加载中',
-                mask: true
-              });
-              wx.request({
-                url: 'http://localhost:40620/tools/app_ajax.ashx?action=call_pm',
-                data: {
-                  uid: getApp().globalData.user.id,
-                  cid: e.currentTarget.dataset.cid
-                },
-                success(res) {
-                  wx.hideLoading();
-                  if (res.data.status == 1) {
-                    wx.makePhoneCall({
-                      phoneNumber: tel //仅为示例，并非真实的电话号码
-                    })
-                  } else {
-                    wx.showToast({
-                      title: res.data.msg,
-                      icon: 'none',
-                      mask: true,
-                      duration: 2000
-                    })
-                    setTimeout(function () {
-                      wx.navigateTo({
-                        url: '../ucenter/point'
+        if (res.tapIndex==0){//拨打电话
+          wx.showModal({
+            title: '提示',
+            content: '首次联系产品经理将消耗30积分，是否确定？',
+            success: function (r) {
+              if (r.confirm) {
+                console.log('用户点击确定')
+                wx.showLoading({
+                  title: '加载中',
+                  mask: true
+                });
+                wx.request({
+                  url: 'http://localhost:40620/tools/app_ajax.ashx?action=call_pm',
+                  data: {
+                    uid: getApp().globalData.user.id,
+                    cid: e.currentTarget.dataset.cid
+                  },
+                  success(res) {
+                    wx.hideLoading();
+                    if (res.data.status == 1) {
+                      wx.makePhoneCall({
+                        phoneNumber: tel //仅为示例，并非真实的电话号码
                       })
-                    }, 2000)
+                    } else {
+                      wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        mask: true,
+                        duration: 2000
+                      })
+                      setTimeout(function () {
+                        wx.navigateTo({
+                          url: '../ucenter/point'
+                        })
+                      }, 2000)
+                    }
                   }
-                }
-              })
-            } else if (r.cancel) {
-              console.log('用户点击取消')
+                })
+              } else if (r.cancel) {
+                console.log('用户点击取消')
+              }
             }
-          }
-        })
+          })
+        }else{//评价
+          wx.navigateTo({
+            url: 'pm_assess?id=' + e.currentTarget.dataset.cid
+          })
+        }
+        
       },
       fail: function (res) {
         console.log(res.errMsg)

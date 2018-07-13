@@ -7,7 +7,7 @@
     {{model.add_time}}
 
     <view class='pm_tel' data-cid='{{model.pm_id}}'  data-tel='{{model.pm_tel}}' bindtap='callPM'>
-      <view class='pmName'><text>联系产品经理</text></view>
+      <view class='pmName'><text>产品经理</text></view>
     </view>
   </view>
 </view>

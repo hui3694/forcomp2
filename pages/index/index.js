@@ -90,7 +90,7 @@ Page({
     })
     //pro_city
     wx.request({
-      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_city',
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pro_city',
       success:function(res){
         that.setData({
           cityList:res.data
@@ -101,7 +101,7 @@ Page({
           success: function (res2) {
             //获取指定位置城市
             wx.request({
-              url: 'https://api.map.baidu.com/geocoder/v2/?ak=DyRqXPh8x25Od6N5XEiqSeuTgyts9nGu&location=' + res.latitude + ',' + res.longitude + '&output=json',
+              url: 'https://api.map.baidu.com/geocoder/v2/?ak=DyRqXPh8x25Od6N5XEiqSeuTgyts9nGu&location=' + res2.latitude + ',' + res2.longitude + '&output=json',
               success: function (res3) {
                 console.log(res3.data.result.addressComponent.city);
                 //找到当前城市并选中

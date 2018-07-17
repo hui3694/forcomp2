@@ -16,7 +16,8 @@
     "pages/ucenter/pm",
     "pages/ucenter/point",
     "pages/pro/pm_pro",
-    "pages/pro/pm_assess"
+    "pages/pro/pm_assess",
+    "pages/ucenter/amount"
   ],
   "tabBar": {
     "list": [

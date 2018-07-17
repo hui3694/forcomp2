@@ -36,7 +36,7 @@
     <button class='btnShare' open-type="share" bindtap='onShareArticle'></button>
   </view>
   <view class='item'>
-    <navigator>
+    <navigator url='amount'>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon4.png'></image>
       <view>我的红包</view>
     </navigator>

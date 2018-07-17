@@ -1,67 +1,54 @@
-// pages/ucenter/userEdit.js
+// pages/ucenter/amount.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    user:null,
-    btnValue:true,
-    loading: true
+    userInfo: null,
+    list: null,
+    msgShow: false
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
-    that.setData({
-      user: getApp().globalData.user
-    });
-  },
-  formPost:function(e){
     wx.showLoading({
       title: '加载中',
       mask: true
     })
-
-    var that=this;
-    e.detail.value.openid = that.data.user.openid;
+    var that = this;
+    that.setData({
+      userInfo: getApp().globalData.user
+    })
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=update_user',
-      data:e.detail.value,
-      success:function(res){
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=register',
+      data: {
+        openid: that.data.userInfo.openid
+      },
+      success: function (res) {
+        that.setData({
+          userInfo: res.data
+        })
+        getApp().globalData.user = res.data;
+        //----------------------------------
         wx.request({
-          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=register',
+          url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_amount_list',
           data: {
-            openid: getApp().globalData.user.openid
+            uid: getApp().globalData.user.id
           },
-          success: function (res3) {
+          success: function (res) {
             wx.hideLoading();
             that.setData({
-              userInfo: res3.data
+              list: res.data
             })
-            getApp().globalData.user = res3.data;
           }
         })
-
-        if(res.data.status==1){
-          wx.showToast({
-            title: res.data.msg,
-            mask: true,
-            icon: 'success',
-            duration: 2000
-          })
-          setTimeout(function(){
-            wx.switchTab({
-              url: '../ucenter/index'
-            })
-          },2000)
-        }else{
-
-        }
       }
     })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -109,5 +96,15 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  showMsg: function () {
+    this.setData({
+      msgShow: true
+    })
+  },
+  hideMsg: function () {
+    this.setData({
+      msgShow: false
+    })
   }
 })

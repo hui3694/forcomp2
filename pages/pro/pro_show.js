@@ -39,7 +39,7 @@ Page({
     }
     //获取模型
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pro_model',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_model',
       data: {
         id: that.data.id,
         uid: uid
@@ -133,7 +133,7 @@ Page({
       },
       success: function (res) {
         wx.request({
-          url: 'http://localhost:40620/tools/app_ajax.ashx?action=point_log',
+          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=point_log',
           data: {
             type: 2,//评论
             uid: getApp().globalData.user.id,
@@ -287,7 +287,7 @@ Page({
                   mask: true
                 });
                 wx.request({
-                  url: 'http://localhost:40620/tools/app_ajax.ashx?action=call_pm',
+                  url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=call_pm',
                   data: {
                     uid: getApp().globalData.user.id,
                     cid: e.currentTarget.dataset.cid

@@ -60,7 +60,7 @@ App({
   },
   goShare:function(){
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=go_share',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=go_share',
       data: {
         uid: getApp().globalData.user == null ? 0 : getApp().globalData.user.id
       }

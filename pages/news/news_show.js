@@ -137,7 +137,7 @@ Page({
       },
       success:function(res){
         wx.request({
-          url: 'http://localhost:40620/tools/app_ajax.ashx?action=point_log',
+          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=point_log',
           data:{
             type:2,//评论
             uid: getApp().globalData.user.id,

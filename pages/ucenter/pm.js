@@ -8,7 +8,8 @@ Page({
     birthday: '',
     year: '',
     yearNow:'',
-    isEnabled:0
+    isEnabled:0,
+    msg:''
   },
 
   /**
@@ -21,7 +22,7 @@ Page({
     })
     var that = this;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=pm_exis',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=pm_exis',
       data:{
         uid: getApp().globalData.user == undefined ? 0 : getApp().globalData.user.id
       },
@@ -41,7 +42,7 @@ Page({
             })
           }, 2000)
         }
-        else{
+        else if(res.data.status==1){
           that.setData({
             isEnabled:1,
             msg:res.data.msg
@@ -131,7 +132,7 @@ Page({
     e.detail.value.img = that.data.img;
     console.log(e.detail.value);
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=register_pm',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=register_pm',
       data: e.detail.value,
       success:function(res){
         wx.hideLoading();
@@ -163,7 +164,7 @@ Page({
         var imageSrc = res.tempFilePaths[0]
         console.log(imageSrc);
         wx.uploadFile({
-          url: "http://localhost:40620/tools/upload_ajax.ashx?action=UpLoadFile&type=0",
+          url: "https://fg.huiguoguo.com/tools/upload_ajax.ashx?action=UpLoadFile&type=0",
           filePath: imageSrc,
           name: 'Filedata',
           success: function (res) {
@@ -203,7 +204,7 @@ Page({
 
         var imageSrc2 = res.tempFilePaths[0]
         wx.uploadFile({
-          url: "http://localhost:40620/tools/upload_ajax.ashx?action=UpLoadFile&type=0",
+          url: "https://fg.huiguoguo.com/tools/upload_ajax.ashx?action=UpLoadFile&type=0",
           filePath: imageSrc2,
           name: 'Filedata',
           success: function (res) {

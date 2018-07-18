@@ -25,7 +25,7 @@ Page({
     })
     var that=this
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pm_model',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pm_model',
       data: {
         id:options.id
       },
@@ -34,7 +34,7 @@ Page({
           model: res.data
         });
         wx.request({
-          url: 'http://localhost:40620/tools/app_ajax.ashx?action=is_assess',
+          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=is_assess',
           data: {
             pm_id: options.id,
             uid: getApp().globalData.user.id
@@ -114,7 +114,7 @@ Page({
       mask: true
     })
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=pm_assess',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=pm_assess',
       data:{
         uid: getApp().globalData.user.id,
         pm_id: that.data.id,

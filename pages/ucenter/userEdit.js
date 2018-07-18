@@ -27,7 +27,7 @@ Page({
     var that=this;
     e.detail.value.openid = that.data.user.openid;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=update_user',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=update_user',
       data:e.detail.value,
       success:function(res){
         wx.request({

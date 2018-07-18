@@ -90,7 +90,7 @@ Page({
     })
     //pro_city
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pro_city',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_city',
       success:function(res){
         that.setData({
           cityList:res.data

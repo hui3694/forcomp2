@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     var that=this;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_user_view_list',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_user_view_list',
       data:{
         uid: getApp().globalData.user.id,
         isPN:that.data.isPN,

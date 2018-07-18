@@ -109,7 +109,7 @@ Page({
     console.log(e.detail.value);
     
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=product_add',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=product_add',
       data: e.detail.value,
       success:function(res){
         wx.hideLoading();
@@ -184,7 +184,7 @@ Page({
     var that=this;
     
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pro_model',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pro_model',
       data:{
         id: that.data.id
       },

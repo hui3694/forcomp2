@@ -18,7 +18,7 @@ Page({
       mask: true
     })
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_pm_proList',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_pm_proList',
       data:{
         uid: getApp().globalData.user.id
       },
@@ -83,7 +83,7 @@ Page({
   delPro:function(e){
     var that=this;
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=pm_del_pro',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=pm_del_pro',
       data:{
         id:e.target.dataset.id
       },

@@ -189,7 +189,7 @@ Page({
     })
 
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=point_log',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=point_log',
       data:{
         type:1,
         uid: getApp().globalData.user.id

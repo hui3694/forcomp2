@@ -23,7 +23,7 @@ Page({
       userInfo: getApp().globalData.user
     })
     wx.request({
-      url: 'http://localhost:40620/tools/app_ajax.ashx?action=register',
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=register',
       data: {
         openid: that.data.userInfo.openid
       },
@@ -34,7 +34,7 @@ Page({
         getApp().globalData.user = res.data;
         //----------------------------------
         wx.request({
-          url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_amount_list',
+          url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_amount_list',
           data: {
             uid: getApp().globalData.user.id
           },

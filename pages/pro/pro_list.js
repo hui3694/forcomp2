@@ -11,7 +11,8 @@ Page({
     list:[],
     btmMsg: '下拉加载更多...',
     noMore: false,
-    keywords:''
+    keywords:'',
+    uid:0
   },
 
   /**
@@ -26,7 +27,8 @@ Page({
     var that=this;
     that.setData({
       category: options.id == undefined ? 0 : options.id,
-      keywords: options.keywords == undefined ? '' : options.keywords
+      keywords: options.keywords == undefined ? '' : options.keywords,
+      uid: options.uid == undefined ? 0 : options.uid
       
     })
     wx.request({
@@ -34,7 +36,8 @@ Page({
       data:{
         category: that.data.category,
         city: getApp().globalData.localCity,
-        keywords: that.data.keywords
+        keywords: that.data.keywords,
+        uid: that.data.uid
       },
       success:function(res){
         wx.hideLoading();
@@ -112,7 +115,8 @@ Page({
         page: page,
         category: that.data.category,
         city: getApp().globalData.localCity,
-        keywords: that.data.keywords
+        keywords: that.data.keywords,
+        uid: that.data.uid
       },
       header: {
         'content-type': 'application/json' // 默认值

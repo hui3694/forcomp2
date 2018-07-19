@@ -220,6 +220,33 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    var shareObj = {
+      success: function (res) {
+        // 转发成功之后的回调
+        if (res.errMsg == 'shareAppMessage:ok') {
+          console.log('成功转发');
+          if (res.shareTickets == undefined) {
+            console.log('转发到好友');
+          } else {
+            console.log('转发到群');
+            getApp().goShare();
+          }
+        }
+      },
+      fail: function (res) {
+        // 转发失败之后的回调
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          console.log('取消转发');
+          // 用户取消转发
+        } else if (res.errMsg == 'shareAppMessage:fail') {
+          console.log('转发出错');
+          // 转发失败，其中 detail message 为详细失败信息
+        }
+      },
+      complete: function () {
+        // 转发结束之后的回调（转发成不成功都会执行）
+      }
+    };
+    return shareObj;
   }
 })

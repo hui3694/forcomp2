@@ -33,11 +33,11 @@
     <text>热门推荐</text>
   </view>
   <swiper circular autoplay>
-    <block wx:for="{{commend}}">
+    <block wx:for="{{banner}}">
       <swiper-item>
         <view>
-          <navigator url='{{item.url}}'>
-            <image src='{{item.img}}'  mode='widthFix'></image>
+          <navigator url='{{(item.link_url==""||item.link_url==0)?"":"../pro/pro_show?id="+item.link_url}}'>
+            <image src='https://www.forcomp.cn/{{item.img_url}}'  mode='widthFix'></image>
           </navigator>
         </view>
       </swiper-item>
@@ -52,8 +52,8 @@
   </view>
   <view class='list'>
     <view class='item' wx:for="{{people}}">
-      <navigator url='{{item.url}}'>
-        <image src='{{item.img}}' mode='widthFix'></image>
+      <navigator url='{{(item.link_url==""||item.link_url==0)?"":"../pro/pro_list?uid="+item.link_url}}'>
+        <image src='https://www.forcomp.cn/{{item.img_url}}' mode='widthFix'></image>
       </navigator>
     </view>
   </view>

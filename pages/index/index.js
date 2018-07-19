@@ -6,7 +6,7 @@ Page({
    */
   data: {
     column:[],
-    commend:[
+    banner:[
       {
         url: '',
         img: 'http://forcomp.huiguoguo.com/img1.jpg'
@@ -78,6 +78,27 @@ Page({
     
     //load
     var that = this;
+    //banner
+    wx.request({
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_banner',
+      data: {},
+      success: function (res) {
+        that.setData({
+          banner: res.data
+        })
+      }
+    })
+    //pm
+    wx.request({
+      url: 'http://localhost:40620/tools/app_ajax.ashx?action=get_banner_pm',
+      data: {},
+      success: function (res) {
+        that.setData({
+          people: res.data
+        })
+      }
+    })
+
     //pro_category
     wx.request({
       url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=get_category_list',

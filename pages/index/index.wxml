@@ -37,7 +37,7 @@
       <swiper-item>
         <view>
           <navigator url='{{(item.link_url==""||item.link_url==0)?"":"../pro/pro_show?id="+item.link_url}}'>
-            <image src='https://www.forcomp.cn/{{item.img_url}}'  mode='widthFix'></image>
+            <image src='https://fg.huiguoguo.com{{item.img_url}}'  mode='widthFix'></image>
           </navigator>
         </view>
       </swiper-item>
@@ -53,7 +53,7 @@
   <view class='list'>
     <view class='item' wx:for="{{people}}">
       <navigator url='{{(item.link_url==""||item.link_url==0)?"":"../pro/pro_list?uid="+item.link_url}}'>
-        <image src='https://www.forcomp.cn/{{item.img_url}}' mode='widthFix'></image>
+        <image src='https://fg.huiguoguo.com{{item.img_url}}' mode='widthFix'></image>
       </navigator>
     </view>
   </view>

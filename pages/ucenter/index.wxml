@@ -16,7 +16,8 @@
 </view>
 
 <view class='menu' wx:if='{{isLogin==2}}'>
-  <view class='item' bindtap='signIn_click'>
+  <view class='item qd' bindtap='signIn_click'>
+    <image class='qd_img' src='http://forcomp.huiguoguo.com/icon_qd{{isQD}}.png' mode='widthFix'></image>
     <view>
       <image mode='aspectFit' src='http://forcomp.huiguoguo.com/uc_icon1.png'></image>
       <view>每日签到</view>

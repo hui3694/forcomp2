@@ -9,6 +9,7 @@
   background-repeat: repeat-y;
   padding: 20px 12px;
   border-radius: 5px;
+  height: 70px;
 }
 .header .info .img{
   width: 65px;
@@ -51,10 +52,12 @@
   background: #fff;
   float: left;
   width: 33%;
+  height: 95px;
   text-align: center;
   margin-top: 8px;
   border-right: 1px solid #e6e6e6;
   position: relative;
+  overflow: hidden;
 }
 .menu .item>navigator{
   padding: 18px 0;
@@ -80,4 +83,13 @@
 .btn-area{
   margin: 0 20px;
   margin-top: 200px;
+}
+.menu .item.qd{
+  position: relative;
+}
+.menu .item.qd .qd_img{
+  position: absolute;
+  width: 40px;
+  top: 8px;
+  right: 0;
 }

@@ -6,33 +6,8 @@ Page({
    */
   data: {
     column:[],
-    banner:[
-      {
-        url: '',
-        img: 'http://forcomp.huiguoguo.com/img1.jpg'
-      }, {
-        url: '',
-        img: 'http://forcomp.huiguoguo.com/img1.jpg'
-      }, {
-        url: '',
-        img: 'http://forcomp.huiguoguo.com/img1.jpg'
-      }
-    ],
-    people:[
-      {
-        url: '',
-        img: 'http://forcomp.huiguoguo.com/people1.jpg'
-      }, {
-        url: '',
-        img: 'http://forcomp.huiguoguo.com/people2.jpg'
-      }, {
-        url: '',
-        img: 'http://forcomp.huiguoguo.com/people3.jpg'
-      }, {
-        url: '',
-        img: 'http://forcomp.huiguoguo.com/people4.jpg'
-      }
-    ],
+    banner:[],
+    people:[],
     news:[],
     cityList:[],
     localCity:'未知',
@@ -283,7 +258,8 @@ Page({
     var index = e.currentTarget.dataset.index;
     console.log(index);
     that.setData({
-      localCity: that.data.cityList[index].city
+      localCity: that.data.cityList[index].city,
+      cityShow: 0
     });
     getApp().globalData.localCity = that.data.cityList[index].city;
   },

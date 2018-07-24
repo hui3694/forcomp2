@@ -7,11 +7,11 @@
     <view class='addr' bindtap='showCity'>
       {{localCity}}
       <!-- <image src='/pages/img/menu_icon.png' mode='widthFix'></image> -->
-      <view class='addrList' wx:if='{{cityShow==1}}'>
+      <!-- <view class='addrList' wx:if='{{cityShow==1}}'>
         <view class='item' wx:for='{{cityList}}' bindtap='cityClick' data-index='{{index}}'>
           {{item.city}}
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>
@@ -87,6 +87,22 @@
           </view>
         </view>
       </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='cityPage' wx:if='{{cityShow==1}}'>
+  <view class='citySearch'>
+    <input type='text' placeholder='城市'></input>
+  </view>
+  <text class='cityRemark'>已开通城市</text>
+  <view class='list'>
+    <view class='item' wx:for='{{cityList}}' bindtap='cityClick' data-index='{{index}}'>
+       {{item.city}}
+    </view>
+    <view class='item'>
+      <text>更多城市开通中...</text>
     </view>
   </view>
 </view>

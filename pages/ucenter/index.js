@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin:1
+    isLogin:1,
+    isQD: 0
   },
 
   /**
@@ -20,11 +21,11 @@ Page({
       console.log('未登录');
       that.bindGetUserInfo(null);
     }else{
+      that.isQD();
       that.setData({
         isLogin:2
       })
     }
-
   },
   //授权回调
   bindGetUserInfo: function (e) {
@@ -84,6 +85,7 @@ Page({
                               userInfo: res3.data
                             })
                             getApp().globalData.user = res3.data;
+                            that.isQD();
                           }
                         })
                       }
@@ -108,20 +110,34 @@ Page({
 
     console.log(that.data.userInfo)
   },
+  isQD:function(){
+    var that = this;
+    wx.request({
+      url: 'https://fg.huiguoguo.com/tools/app_ajax.ashx?action=is_sign',
+      data:{
+        uid: that.data.userInfo.id
+      },
+      success:function(res){
+        that.setData({
+          isQD: res.data.val
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      userInfo: getApp().globalData.user
-    })
+    
   },
   
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      userInfo: getApp().globalData.user
+    })
   },
 
   /**

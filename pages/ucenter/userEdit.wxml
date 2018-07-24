@@ -14,11 +14,18 @@
     </view>
     <view class='item'>
       <view class='hd'>
+        <text class='lbl'>年龄</text>
+      </view>
+      <view class='bd'>
+        <input class='ipt' name='age' placeholder='输入年龄' value='{{user.age}}' type='number'></input>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='hd'>
         <text class='lbl'>性别</text>
       </view>
       <view class='bd'>
         <radio-group class='rad' name='sex'>
-          <label><radio value='0' checked='{{user.sex==0?"true":""}}' />保密</label>
           <label><radio value='1' checked='{{user.sex==1?"true":""}}' />男</label>
           <label><radio value='2' checked='{{user.sex==2?"true":""}}' />女</label>
         </radio-group>

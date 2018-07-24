@@ -213,3 +213,39 @@
 .index_news .item .newsMenu .more .more_hide button::after{
   border: none;
 }
+
+.cityPage{
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+}
+.cityPage .citySearch{
+  padding: 8px 15px;
+  border-bottom: 1px solid #ccc;
+}
+.cityPage .citySearch input{
+  background: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 26px;
+  padding-left: 1.2em;
+}
+.cityRemark{
+  font-size: 14px;
+  margin-left: 20px;
+}
+.cityPage .list{
+}
+.cityPage .item{
+  background: #fff;
+  line-height: 32px;
+  border-bottom: 1px solid #eee;
+  padding: 0 20px;
+}
+.cityPage .item text{
+  color: #999;
+}

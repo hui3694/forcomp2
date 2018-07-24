@@ -37,6 +37,7 @@ Page({
           },
           success: function (res3) {
             wx.hideLoading();
+            if(res.data)
             that.setData({
               userInfo: res3.data
             })
@@ -57,7 +58,12 @@ Page({
             })
           },2000)
         }else{
-
+          wx.showToast({
+            title: res.data.msg,
+            mask: true,
+            icon: 'none',
+            duration: 2000
+          })
         }
       }
     })
